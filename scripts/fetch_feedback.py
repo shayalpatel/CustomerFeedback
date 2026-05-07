@@ -30,6 +30,9 @@ def fetch_github_issues(
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             issues = json.loads(resp.read())
+        if not isinstance(issues, list):
+            print(f"GitHub API error: expected list, got {type(issues).__name__}")
+            return []
     except Exception as e:
         print(f"GitHub API error: {e} — keeping existing data")
         return []
