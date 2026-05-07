@@ -94,8 +94,43 @@
     .trend-down  { color: var(--green); }
     .trend-neu   { color: var(--dim); }
 
+    /* ─── SEARCH ─── */
+    .search-wrap {
+      margin-bottom: 28px;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px 12px 40px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23858585' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 14px center;
+    }
+    .search-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(0,122,204,.25);
+    }
+    .search-input::placeholder { color: var(--dim); }
+
+    /* ─── PRODUCT AREAS ─── */
+    .area-bar-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 6px; font-size: 11px;
+    }
+    .area-bar-label { width: 80px; text-align: right; color: var(--dim); flex-shrink: 0; }
+    .area-bar-track { flex: 1; background: var(--border); border-radius: 3px; height: 18px; overflow: hidden; }
+    .area-bar-fill { height: 100%; border-radius: 3px; transition: width .4s ease; }
+    .area-bar-count { width: 36px; font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; }
+
     /* ─── CHARTS ─── */
-    .charts-row { display: grid; grid-template-columns: 300px 1fr; gap: 14px; margin-bottom: 28px; align-items: start; }
+    .charts-row { display: grid; grid-template-columns: 1fr 300px; gap: 14px; margin-bottom: 28px; align-items: start; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
     .card-header { margin-bottom: 18px; }
     .card-title  { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
@@ -276,8 +311,33 @@
     </div>
   </div>
 
-  <!-- ── CHARTS ── -->
+  <!-- ── SEARCH ── -->
+  <div class="search-wrap">
+    <input type="text" class="search-input" id="globalSearch" placeholder="Search across all feedback — e.g. 'sidebar', 'crash', 'copilot'" oninput="handleSearch(this.value)">
+  </div>
+
+  <!-- ── CHARTS: Product Areas + Category Donut ── -->
+  <div class="section-row">
+    <span class="section-title">Where's the Heat</span>
+    <span class="section-note">Feedback volume by product area and category</span>
+  </div>
   <div class="charts-row">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Top Product Areas</div>
+        <div class="card-sub">By feedback volume · last 30 days</div>
+      </div>
+      <div id="productAreaBars">
+        <div class="area-bar-row"><span class="area-bar-label">extensions</span><div class="area-bar-track"><div class="area-bar-fill" style="width:100%;background:var(--red)"></div></div><span class="area-bar-count">312</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">copilot</span><div class="area-bar-track"><div class="area-bar-fill" style="width:92%;background:var(--red)"></div></div><span class="area-bar-count">287</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">sidebar</span><div class="area-bar-track"><div class="area-bar-fill" style="width:64%;background:var(--orange)"></div></div><span class="area-bar-count">201</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">terminal</span><div class="area-bar-track"><div class="area-bar-fill" style="width:60%;background:var(--orange)"></div></div><span class="area-bar-count">188</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">git</span><div class="area-bar-track"><div class="area-bar-fill" style="width:46%;background:var(--yellow)"></div></div><span class="area-bar-count">143</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">editor</span><div class="area-bar-track"><div class="area-bar-fill" style="width:43%;background:var(--yellow)"></div></div><span class="area-bar-count">134</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">settings</span><div class="area-bar-track"><div class="area-bar-fill" style="width:31%;background:var(--dim)"></div></div><span class="area-bar-count">98</span></div>
+        <div class="area-bar-row"><span class="area-bar-label">debugging</span><div class="area-bar-track"><div class="area-bar-fill" style="width:24%;background:var(--dim)"></div></div><span class="area-bar-count">76</span></div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-header">
         <div class="card-title">Category Breakdown</div>
@@ -291,63 +351,6 @@
         </div>
       </div>
       <div class="chart-hint">↑ Click a segment to filter the whole dashboard</div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Feedback Volume Trend</div>
-        <div class="card-sub">Daily count by category · last 30 days · hover for details</div>
-      </div>
-      <div class="chart-wrap" style="height:240px">
-        <canvas id="trendChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SOURCE BREAKDOWN ── -->
-  <div class="section-row">
-    <span class="section-title">Feedback Sources</span>
-    <span class="section-note">8 active channels · internal &amp; external</span>
-  </div>
-  <div class="source-grid">
-    <div class="source-chip">
-      <span class="source-icon-sm">🐙</span>
-      <div class="source-info"><div class="source-name">GitHub Issues</div><div class="source-count">1,142 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📱</span>
-      <div class="source-info"><div class="source-name">In-App Widget</div><div class="source-count">487 items</div></div>
-      <span class="source-type-tag tag-internal">Internal</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📊</span>
-      <div class="source-info"><div class="source-name">NPS / CSAT Survey</div><div class="source-count">374 items</div></div>
-      <span class="source-type-tag tag-survey">Survey</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">💬</span>
-      <div class="source-info"><div class="source-name">Reddit r/vscode</div><div class="source-count">268 items</div></div>
-      <span class="source-type-tag tag-social">Social</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">🎫</span>
-      <div class="source-info"><div class="source-name">Support Tickets</div><div class="source-count">211 items</div></div>
-      <span class="source-type-tag tag-internal">Internal</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">🏢</span>
-      <div class="source-info"><div class="source-name">Tech Community</div><div class="source-count">163 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">⭐</span>
-      <div class="source-info"><div class="source-name">G2 / Capterra</div><div class="source-count">128 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📚</span>
-      <div class="source-info"><div class="source-name">Stack Overflow</div><div class="source-count">74 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
     </div>
   </div>
 
@@ -584,13 +587,72 @@
     </div>
   </div>
 
+  <!-- ── TREND ── -->
+  <div class="section-row">
+    <span class="section-title">Trajectory</span>
+    <span class="section-note">Daily feedback volume · last 30 days</span>
+  </div>
+  <div class="card" style="margin-bottom:28px">
+    <div class="chart-wrap" style="height:240px">
+      <canvas id="trendChart"></canvas>
+    </div>
+  </div>
+
+  <!-- ── SOURCE BREAKDOWN ── -->
+  <div class="section-row">
+    <span class="section-title">Feedback Sources</span>
+    <span class="section-note">8 active channels · internal &amp; external</span>
+  </div>
+  <div class="source-grid">
+    <div class="source-chip">
+      <span class="source-icon-sm">🐙</span>
+      <div class="source-info"><div class="source-name">GitHub Issues</div><div class="source-count">1,142 items</div></div>
+      <span class="source-type-tag tag-external">External</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">📱</span>
+      <div class="source-info"><div class="source-name">In-App Widget</div><div class="source-count">487 items</div></div>
+      <span class="source-type-tag tag-internal">Internal</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">📊</span>
+      <div class="source-info"><div class="source-name">NPS / CSAT Survey</div><div class="source-count">374 items</div></div>
+      <span class="source-type-tag tag-survey">Survey</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">💬</span>
+      <div class="source-info"><div class="source-name">Reddit r/vscode</div><div class="source-count">268 items</div></div>
+      <span class="source-type-tag tag-social">Social</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">🎫</span>
+      <div class="source-info"><div class="source-name">Support Tickets</div><div class="source-count">211 items</div></div>
+      <span class="source-type-tag tag-internal">Internal</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">🏢</span>
+      <div class="source-info"><div class="source-name">Tech Community</div><div class="source-count">163 items</div></div>
+      <span class="source-type-tag tag-external">External</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">⭐</span>
+      <div class="source-info"><div class="source-name">G2 / Capterra</div><div class="source-count">128 items</div></div>
+      <span class="source-type-tag tag-external">External</span>
+    </div>
+    <div class="source-chip">
+      <span class="source-icon-sm">📚</span>
+      <div class="source-info"><div class="source-name">Stack Overflow</div><div class="source-count">74 items</div></div>
+      <span class="source-type-tag tag-external">External</span>
+    </div>
+  </div>
+
 </main>
 
 <!-- ─── FOOTER ─── -->
 <footer>
   Powered by <a href="https://anthropic.com" target="_blank">Claude AI</a> ·
   Data sourced from <a href="https://github.com/microsoft/vscode/issues" target="_blank">microsoft/vscode</a> GitHub Issues, NPS/CSAT surveys, support tickets, community forums &amp; review sites ·
-  Auto-refreshed daily via GitHub Actions ·
+  Refreshed on demand via Claude AI ·
   <a href="https://github.com/shayalpatel/CustomerFeedback" target="_blank">View source on GitHub</a>
 </footer>
 
@@ -754,6 +816,30 @@ function applyGlobalFilter(cat, cardEl) {
   const btnMap = { all:0, bug:1, feature:2, ux:3 };
   const btnIdx = btnMap[cat] ?? 0;
   document.querySelectorAll('.f-btn')[btnIdx].classList.add('active');
+}
+
+function handleSearch(query) {
+  const q = query.toLowerCase().trim();
+
+  // Filter clusters
+  document.querySelectorAll('.cluster').forEach(c => {
+    if (!q) { c.classList.remove('dimmed'); c.style.display = ''; return; }
+    const text = c.textContent.toLowerCase();
+    const match = text.includes(q);
+    c.classList.toggle('dimmed', !match);
+  });
+
+  // Filter feed items
+  const items = document.querySelectorAll('.feed-item');
+  let visible = 0;
+  items.forEach(item => {
+    if (!q) { item.style.display = 'grid'; visible++; return; }
+    const text = item.textContent.toLowerCase();
+    const match = text.includes(q);
+    item.style.display = match ? 'grid' : 'none';
+    if (match) visible++;
+  });
+  document.getElementById('feedCount').textContent = visible;
 }
 
 // Feed filter buttons → also sync stat cards
