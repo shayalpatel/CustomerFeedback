@@ -531,6 +531,15 @@ const LIVE_DATA = {
 };
 /* DATA_END */
 
+function esc(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 // ── Chart data ──
 const DAYS = Array.from({length:30},(_,i)=>{
   const d = new Date('2026-04-06'); d.setDate(d.getDate()+i);
@@ -645,6 +654,7 @@ function syncFilter(btn, cat) {
 
 // ── Cluster modal ──
 function openClusterByIndex(idx) {
+  if (!LIVE_DATA.clusters) return;
   const c = LIVE_DATA.clusters[idx];
   if (!c) return;
   const catBadge = { bug: ['Bug','b-bug'], feature_request: ['Feature','b-feature'], ux_issue: ['UX','b-ux'] };
@@ -659,7 +669,7 @@ function openClusterByIndex(idx) {
       <div class="modal-stat-row"><span class="modal-stat-label">Sources</span><span class="modal-stat-value">${c.sources}</span></div>
     </div>
     <div class="modal-items-title">Sample Reports</div>
-    ${(c.sample_texts || []).map(s => `<div class="modal-item">"${s.text}"<div class="modal-item-meta">${s.meta}</div></div>`).join('')}
+    ${(c.sample_texts || []).map(s => `<div class="modal-item">"${esc(s.text)}"<div class="modal-item-meta">${esc(s.meta)}</div></div>`).join('')}
   `;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -672,6 +682,10 @@ function closeModal(e) {
 document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
 
 function renderFromData() {
+  if (!LIVE_DATA || !LIVE_DATA.totals || !LIVE_DATA.clusters || !LIVE_DATA.recent) {
+    console.error('LIVE_DATA incomplete — skipping render');
+    return;
+  }
   const d = LIVE_DATA;
   const total = d.totals.bug + d.totals.feature_request + d.totals.ux_issue;
 
@@ -729,10 +743,10 @@ function renderFromData() {
       const urgLabel = c.urgency === 'critical' ? '⚠ Critical' : c.urgency === 'high' ? 'High urgency' : c.urgency === 'medium' ? 'Medium urgency' : 'High demand';
       const catFilter = c.category === 'feature_request' ? 'feature' : c.category === 'ux_issue' ? 'ux' : 'bug';
       return `<div class="cluster" data-cat="${catFilter}" onclick="openClusterByIndex(${i})">
-        <div class="cluster-top"><span class="cluster-name">${c.title}</span><span class="badge ${badgeClass}">${badgeLabel}</span></div>
-        <div class="cluster-meta">${c.item_count} reports · ${c.sources} · ${c.growth === 'stable' ? 'stable' : c.growth === 'new' ? 'new' : c.growth + ' this week'}</div>
+        <div class="cluster-top"><span class="cluster-name">${esc(c.title)}</span><span class="badge ${badgeClass}">${badgeLabel}</span></div>
+        <div class="cluster-meta">${c.item_count} reports · ${esc(c.sources)} · ${c.growth === 'stable' ? 'stable' : c.growth === 'new' ? 'new' : esc(c.growth) + ' this week'}</div>
         <div class="bar-bg"><div class="bar" style="width:${barPct}%;background:${barColor}"></div></div>
-        <div class="cluster-signal" style="color:${sigColor}">${urgLabel} · ${c.signal}</div>
+        <div class="cluster-signal" style="color:${sigColor}">${urgLabel} · ${esc(c.signal)}</div>
       </div>`;
     }).join('');
   }
@@ -751,9 +765,9 @@ function renderFromData() {
       return `<div class="feed-item" data-cat="${catFilter[item.category] || item.category}">
         <div class="src-icon">${item.icon}</div>
         <div>
-          <div class="feed-text">"${item.text}"</div>
+          <div class="feed-text">"${esc(item.text)}"</div>
           <div class="feed-meta">
-            <span>${item.source}</span><span>${item.time}</span>
+            <span>${esc(item.source)}</span><span>${esc(item.time)}</span>
             <span class="feed-source-type ${tagClasses[item.source_type]||'tag-external'}">${item.source_type}</span>
             <span class="feed-cat-tag" style="background:${catColors[item.category]};color:${catTextColors[item.category]}">${catLabels[item.category]}${urgLabel}</span>
           </div>
