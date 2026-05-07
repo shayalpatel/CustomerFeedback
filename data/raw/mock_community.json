@@ -1,0 +1,112 @@
+[
+  {
+    "id": "reddit-8821",
+    "source": "reddit",
+    "source_type": "social",
+    "timestamp": "2026-05-03T20:15:00Z",
+    "raw_text": "Please add a way to pin specific terminals so they don't get buried when I open new ones. This would save me so much time daily.",
+    "author_id": "reddit_user_41002",
+    "rating": null,
+    "version": null,
+    "url": "https://reddit.com/r/vscode/comments/abc123"
+  },
+  {
+    "id": "reddit-8815",
+    "source": "reddit",
+    "source_type": "social",
+    "timestamp": "2026-04-30T18:45:00Z",
+    "raw_text": "Extension host crash every time I switch between branches with git. Makes the whole editor unusable for 30 seconds.",
+    "author_id": "reddit_user_40996",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://reddit.com/r/vscode/comments/def456"
+  },
+  {
+    "id": "reddit-8809",
+    "source": "reddit",
+    "source_type": "social",
+    "timestamp": "2026-04-28T22:30:00Z",
+    "raw_text": "The theme editor preview would be SO helpful. Right now I have to apply and reload to see if a theme looks good.",
+    "author_id": "reddit_user_40990",
+    "rating": null,
+    "version": null,
+    "url": "https://reddit.com/r/vscode/comments/ghi789"
+  },
+  {
+    "id": "reddit-8803",
+    "source": "reddit",
+    "source_type": "social",
+    "timestamp": "2026-04-25T19:20:00Z",
+    "raw_text": "Can we get better documentation for remote debugging? Spent hours figuring out the config. It's too complex.",
+    "author_id": "reddit_user_40984",
+    "rating": null,
+    "version": null,
+    "url": "https://reddit.com/r/vscode/comments/jkl012"
+  },
+  {
+    "id": "so-15203",
+    "source": "stack_overflow",
+    "source_type": "external",
+    "timestamp": "2026-05-02T07:30:00Z",
+    "raw_text": "VS Code keeps hanging when opening files over 500MB. Any way to optimize this for large files?",
+    "author_id": "so_user_15203",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://stackoverflow.com/questions/15203"
+  },
+  {
+    "id": "so-15195",
+    "source": "stack_overflow",
+    "source_type": "external",
+    "timestamp": "2026-04-29T12:15:00Z",
+    "raw_text": "Copilot suggestions are irrelevant most of the time. Is there a way to improve the context it uses?",
+    "author_id": "so_user_15195",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://stackoverflow.com/questions/15195"
+  },
+  {
+    "id": "so-15187",
+    "source": "stack_overflow",
+    "source_type": "external",
+    "timestamp": "2026-04-26T08:45:00Z",
+    "raw_text": "Need a way to customize the order of tabs or groups. Current default order doesn't match my workflow.",
+    "author_id": "so_user_15187",
+    "rating": null,
+    "version": null,
+    "url": "https://stackoverflow.com/questions/15187"
+  },
+  {
+    "id": "tc-6234",
+    "source": "tech_community",
+    "source_type": "external",
+    "timestamp": "2026-05-01T14:00:00Z",
+    "raw_text": "It would be amazing to have built-in project templates for common stacks. Right now setup takes too long.",
+    "author_id": "tc_user_6234",
+    "rating": null,
+    "version": null,
+    "url": "https://devforum.example.com/threads/6234"
+  },
+  {
+    "id": "tc-6228",
+    "source": "tech_community",
+    "source_type": "external",
+    "timestamp": "2026-04-27T11:30:00Z",
+    "raw_text": "The marketplace search results are confusing. Extensions with similar names make it hard to find what I need.",
+    "author_id": "tc_user_6228",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://devforum.example.com/threads/6228"
+  },
+  {
+    "id": "tc-6222",
+    "source": "tech_community",
+    "source_type": "external",
+    "timestamp": "2026-04-24T16:20:00Z",
+    "raw_text": "Workspace sync is unreliable across my machines. Settings don't always propagate properly.",
+    "author_id": "tc_user_6222",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://devforum.example.com/threads/6222"
+  }
+]

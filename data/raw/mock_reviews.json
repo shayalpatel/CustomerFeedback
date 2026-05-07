@@ -1,0 +1,68 @@
+[
+  {
+    "id": "g2-301",
+    "source": "g2_review",
+    "source_type": "external",
+    "timestamp": "2026-05-02T13:00:00Z",
+    "raw_text": "Great editor overall (4/5 stars). Only real complaint is that the Git diff view is nearly unreadable in dark mode. The added/removed line colors are too similar.",
+    "author_id": "g2_user_8810",
+    "rating": 4,
+    "version": null,
+    "url": "https://www.g2.com/products/vscode/reviews/12345"
+  },
+  {
+    "id": "g2-295",
+    "source": "g2_review",
+    "source_type": "external",
+    "timestamp": "2026-04-29T10:30:00Z",
+    "raw_text": "The extension marketplace is excellent but search needs improvement (3/5 stars). Too many similar extensions make finding the right one difficult.",
+    "author_id": "g2_user_8804",
+    "rating": 3,
+    "version": null,
+    "url": "https://www.g2.com/products/vscode/reviews/12340"
+  },
+  {
+    "id": "g2-289",
+    "source": "g2_review",
+    "source_type": "external",
+    "timestamp": "2026-04-26T15:45:00Z",
+    "raw_text": "Absolutely love the Copilot integration (5/5 stars). It's changed how I code. Would be perfect if latency was lower on slower networks.",
+    "author_id": "g2_user_8798",
+    "rating": 5,
+    "version": "1.89.1",
+    "url": "https://www.g2.com/products/vscode/reviews/12335"
+  },
+  {
+    "id": "g2-283",
+    "source": "g2_review",
+    "source_type": "external",
+    "timestamp": "2026-04-23T09:15:00Z",
+    "raw_text": "Been using VS Code for 3 years and it keeps getting better (4/5 stars). Only minor complaint is that some UI options are hard to find.",
+    "author_id": "g2_user_8792",
+    "rating": 4,
+    "version": "1.89.0",
+    "url": "https://www.g2.com/products/vscode/reviews/12330"
+  },
+  {
+    "id": "cap-156",
+    "source": "capterra_review",
+    "source_type": "external",
+    "timestamp": "2026-04-30T12:00:00Z",
+    "raw_text": "Good editor with solid features (2/5 stars). Extension host crashes are a major issue that have caused me data loss. Needs better stability.",
+    "author_id": "cap_user_156",
+    "rating": 2,
+    "version": "1.89.1",
+    "url": "https://www.capterra.com/reviews/vscode/156"
+  },
+  {
+    "id": "cap-150",
+    "source": "capterra_review",
+    "source_type": "external",
+    "timestamp": "2026-04-27T14:30:00Z",
+    "raw_text": "Really solid choice for development (5/5 stars). The customization options are endless and the community is very supportive.",
+    "author_id": "cap_user_150",
+    "rating": 5,
+    "version": "1.89.1",
+    "url": "https://www.capterra.com/reviews/vscode/150"
+  }
+]

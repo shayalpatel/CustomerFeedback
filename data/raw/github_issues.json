@@ -1,0 +1,167 @@
+[
+  {
+    "id": "gh-12847",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-05-05T07:23:00Z",
+    "raw_text": "Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes.",
+    "author_id": "gh_user_38291",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12847"
+  },
+  {
+    "id": "gh-12831",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-05-04T14:10:00Z",
+    "raw_text": "The sidebar panels can't be resized independently — they all move together. Frustrating when I want a large file explorer but a small outline panel.",
+    "author_id": "gh_user_55102",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://github.com/microsoft/vscode/issues/12831"
+  },
+  {
+    "id": "gh-12756",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-28T09:45:00Z",
+    "raw_text": "Please add multi-cursor support to Find and Replace. Sublime Text has this and it saves a ton of time for bulk edits.",
+    "author_id": "gh_user_71044",
+    "rating": null,
+    "version": null,
+    "url": "https://github.com/microsoft/vscode/issues/12756"
+  },
+  {
+    "id": "gh-12745",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-05-03T11:22:00Z",
+    "raw_text": "Extension host crashed again while debugging. This is the 5th time this month with the same debugger extension. Makes productivity impossible.",
+    "author_id": "gh_user_29847",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12745"
+  },
+  {
+    "id": "gh-12738",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-30T16:45:00Z",
+    "raw_text": "Copilot suggestions are incredibly slow — 4-5 second delay on even simple completions. Makes writing code frustrating.",
+    "author_id": "gh_user_88102",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12738"
+  },
+  {
+    "id": "gh-12721",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-27T08:30:00Z",
+    "raw_text": "Git diff view is unreadable in dark mode — added and removed lines have nearly identical colors. Please improve contrast.",
+    "author_id": "gh_user_41203",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://github.com/microsoft/vscode/issues/12721"
+  },
+  {
+    "id": "gh-12715",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-05-02T13:15:00Z",
+    "raw_text": "Terminal freezes when running long-running processes. UI becomes unresponsive for 10+ seconds.",
+    "author_id": "gh_user_62891",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12715"
+  },
+  {
+    "id": "gh-12709",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-25T10:20:00Z",
+    "raw_text": "Would be amazing to have pinned tabs that don't close with 'Close All' command. Important files keep getting closed accidentally.",
+    "author_id": "gh_user_33521",
+    "rating": null,
+    "version": null,
+    "url": "https://github.com/microsoft/vscode/issues/12709"
+  },
+  {
+    "id": "gh-12701",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-24T14:50:00Z",
+    "raw_text": "Extension host unexpectedly exits when loading certain extensions together. Had to uninstall one to get stability back.",
+    "author_id": "gh_user_75432",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://github.com/microsoft/vscode/issues/12701"
+  },
+  {
+    "id": "gh-12695",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-23T09:30:00Z",
+    "raw_text": "Search performance degrades dramatically when searching in large projects. Takes 30+ seconds for simple text search.",
+    "author_id": "gh_user_51234",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12695"
+  },
+  {
+    "id": "gh-12689",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-05-01T15:10:00Z",
+    "raw_text": "It would be great to customize keyboard shortcuts per workspace. Different projects have different shortcut needs.",
+    "author_id": "gh_user_19283",
+    "rating": null,
+    "version": null,
+    "url": "https://github.com/microsoft/vscode/issues/12689"
+  },
+  {
+    "id": "gh-12678",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-22T11:45:00Z",
+    "raw_text": "Workspace settings sync is unreliable. Sometimes settings don't apply after reloading, need to manually re-apply them.",
+    "author_id": "gh_user_88721",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://github.com/microsoft/vscode/issues/12678"
+  },
+  {
+    "id": "gh-12667",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-21T13:20:00Z",
+    "raw_text": "The color picker for themes is hard to use — wish there was a way to preview themes before applying them permanently.",
+    "author_id": "gh_user_44156",
+    "rating": null,
+    "version": null,
+    "url": "https://github.com/microsoft/vscode/issues/12667"
+  },
+  {
+    "id": "gh-12655",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-20T16:30:00Z",
+    "raw_text": "Source control sidebar doesn't show ignored files. Would be helpful to see what's being ignored and why.",
+    "author_id": "gh_user_21987",
+    "rating": null,
+    "version": "1.89.1",
+    "url": "https://github.com/microsoft/vscode/issues/12655"
+  },
+  {
+    "id": "gh-12643",
+    "source": "github_issues",
+    "source_type": "external",
+    "timestamp": "2026-04-19T10:45:00Z",
+    "raw_text": "Debugger console doesn't properly handle multiline input. Makes debugging complex expressions very difficult.",
+    "author_id": "gh_user_15678",
+    "rating": null,
+    "version": "1.89.0",
+    "url": "https://github.com/microsoft/vscode/issues/12643"
+  }
+]

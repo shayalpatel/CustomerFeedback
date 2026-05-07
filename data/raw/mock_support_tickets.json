@@ -1,0 +1,90 @@
+[
+  {
+    "id": "st-4421",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-05-04T16:45:00Z",
+    "raw_text": "Copilot suggestions have a noticeable 3-4 second delay on my home internet. Same code completes instantly at the office. This is blocking my workflow.",
+    "author_id": "user_E8832",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "st-4415",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-05-03T13:20:00Z",
+    "raw_text": "Extension host keeps crashing with Data Loss Studio extension. Losing unsaved work every day. This is a critical issue.",
+    "author_id": "user_E8825",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "st-4408",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-30T09:10:00Z",
+    "raw_text": "Git integration doesn't properly detect changes in files. Sometimes I need to reload the window for changes to show up. Very disruptive.",
+    "author_id": "user_E8819",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "st-4401",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-28T11:40:00Z",
+    "raw_text": "Settings sync not working every time. Have to manually reconfigure Copilot settings on every machine. Time consuming.",
+    "author_id": "user_E8812",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "st-4395",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-26T15:25:00Z",
+    "raw_text": "It would be great to have a dark mode toggle button in the UI instead of going through settings every time.",
+    "author_id": "user_E8806",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "st-4389",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-24T10:15:00Z",
+    "raw_text": "The debugger keeps disconnecting from remote processes. Every time this happens, I lose my debugging session and have to restart.",
+    "author_id": "user_E8800",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "st-4382",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-22T14:50:00Z",
+    "raw_text": "Would really appreciate better file preview functionality when hovering over tabs. Just a quick preview would help navigating large projects.",
+    "author_id": "user_E8794",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "st-4376",
+    "source": "support_ticket",
+    "source_type": "internal",
+    "timestamp": "2026-04-20T12:35:00Z",
+    "raw_text": "Terminal doesn't properly handle long running processes with colored output. Colors get garbled every time.",
+    "author_id": "user_E8788",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  }
+]

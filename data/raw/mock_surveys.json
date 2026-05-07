@@ -1,0 +1,112 @@
+[
+  {
+    "id": "nps-4821",
+    "source": "nps_survey",
+    "source_type": "survey",
+    "timestamp": "2026-05-04T11:30:00Z",
+    "raw_text": "NPS Score: 8/10. Would love multi-cursor support in Find and Replace. Currently I have to run multiple searches which is slow.",
+    "author_id": "user_U4821",
+    "rating": 8,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "nps-4810",
+    "source": "nps_survey",
+    "source_type": "survey",
+    "timestamp": "2026-05-03T09:15:00Z",
+    "raw_text": "NPS Score: 9/10. Copilot integration is amazing but the latency on slower connections is really noticeable.",
+    "author_id": "user_U4810",
+    "rating": 9,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "nps-4798",
+    "source": "nps_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-29T14:20:00Z",
+    "raw_text": "NPS Score: 6/10. The extension management UI could be much cleaner. Hard to find extensions I'm looking for.",
+    "author_id": "user_U4798",
+    "rating": 6,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "nps-4785",
+    "source": "nps_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-26T10:45:00Z",
+    "raw_text": "NPS Score: 7/10. Works great overall but wish there was better support for vertical split pane navigation.",
+    "author_id": "user_U4785",
+    "rating": 7,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "csat-2034",
+    "source": "csat_survey",
+    "source_type": "survey",
+    "timestamp": "2026-05-02T16:00:00Z",
+    "raw_text": "CSAT: 5/5. Settings interface is very intuitive and well organized. Makes customization easy.",
+    "author_id": "user_C2034",
+    "rating": 5,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "csat-2021",
+    "source": "csat_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-27T12:30:00Z",
+    "raw_text": "CSAT: 2/5. Search functionality doesn't work properly with regex patterns. Loses results inconsistently.",
+    "author_id": "user_C2021",
+    "rating": 2,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "csat-2009",
+    "source": "csat_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-25T08:15:00Z",
+    "raw_text": "CSAT: 4/5. Workspace management is solid. The ability to save and restore workspaces is very helpful.",
+    "author_id": "user_C2009",
+    "rating": 4,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "email-7523",
+    "source": "email_survey",
+    "source_type": "survey",
+    "timestamp": "2026-05-01T10:00:00Z",
+    "raw_text": "The remote development extension just changed my workflow for the better. Seamless cloud development setup.",
+    "author_id": "user_E7523",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "email-7510",
+    "source": "email_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-28T14:45:00Z",
+    "raw_text": "I've been having issues with keyboard shortcuts conflicting with my OS shortcuts. Hard to customize properly.",
+    "author_id": "user_E7510",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "email-7498",
+    "source": "email_survey",
+    "source_type": "survey",
+    "timestamp": "2026-04-24T11:20:00Z",
+    "raw_text": "Dark mode themes look great but wish there was an auto-switch option based on system time like other editors.",
+    "author_id": "user_E7498",
+    "rating": null,
+    "version": null,
+    "url": null
+  }
+]

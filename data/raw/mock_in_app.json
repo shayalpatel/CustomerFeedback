@@ -1,0 +1,90 @@
+[
+  {
+    "id": "iaw-1001",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-05-05T09:12:00Z",
+    "raw_text": "Extension host crashed again mid-session. Third time this week on my work repo.",
+    "author_id": "user_W2910",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "iaw-0998",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-05-03T15:45:00Z",
+    "raw_text": "Love the new Copilot integration but it's really laggy. Takes forever to get suggestions sometimes.",
+    "author_id": "user_W2907",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "iaw-0995",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-05-01T11:20:00Z",
+    "raw_text": "The sidebar keeps getting hidden accidentally. Need an easy way to pin it or bring it back quickly.",
+    "author_id": "user_W2904",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "iaw-0992",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-04-29T13:30:00Z",
+    "raw_text": "Would be nice to have a quick search across all open files instead of searching in the current file only.",
+    "author_id": "user_W2901",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "iaw-0989",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-04-27T10:15:00Z",
+    "raw_text": "Git buttons could be clearer about what they do. Sometimes I'm not sure if clicking will stage, commit, or push.",
+    "author_id": "user_W2898",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "iaw-0986",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-04-25T16:50:00Z",
+    "raw_text": "Really happy with how customizable the UI is now. Made my workspace feel perfect for my workflow.",
+    "author_id": "user_W2895",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  },
+  {
+    "id": "iaw-0983",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-04-23T09:40:00Z",
+    "raw_text": "Find and Replace modal keeps stealing focus when I don't want it to. Hard to continue editing while searching.",
+    "author_id": "user_W2892",
+    "rating": null,
+    "version": "1.89.0",
+    "url": null
+  },
+  {
+    "id": "iaw-0980",
+    "source": "in_app_widget",
+    "source_type": "internal",
+    "timestamp": "2026-04-21T14:25:00Z",
+    "raw_text": "Terminal is super responsive and the integrated debugging is a lifesaver. Great work on this release.",
+    "author_id": "user_W2889",
+    "rating": null,
+    "version": "1.89.1",
+    "url": null
+  }
+]
