@@ -285,28 +285,28 @@
       <span class="stat-hint">Click to reset</span>
       <div class="stat-accent" style="background:var(--blue)"></div>
       <div class="stat-label">Total Feedback Items</div>
-      <div class="stat-value" id="totalCount">2,847</div>
+      <div class="stat-value" id="statTotal">2,847</div>
       <div class="stat-trend trend-neu">↑ 312 items since last week</div>
     </div>
     <div class="stat-card" data-filter="bug" onclick="applyGlobalFilter('bug', this)">
       <span class="stat-hint">Filter to bugs</span>
       <div class="stat-accent" style="background:var(--red)"></div>
       <div class="stat-label">Bug Reports</div>
-      <div class="stat-value">1,203</div>
+      <div class="stat-value" id="statBug">1,203</div>
       <div class="stat-trend trend-up">↑ 18% &nbsp;·&nbsp; 23 critical</div>
     </div>
     <div class="stat-card" data-filter="feature" onclick="applyGlobalFilter('feature', this)">
       <span class="stat-hint">Filter to features</span>
       <div class="stat-accent" style="background:var(--green)"></div>
       <div class="stat-label">Feature Requests</div>
-      <div class="stat-value">1,081</div>
+      <div class="stat-value" id="statFeature">1,081</div>
       <div class="stat-trend trend-down">↓ 4% from last week</div>
     </div>
     <div class="stat-card" data-filter="ux" onclick="applyGlobalFilter('ux', this)">
       <span class="stat-hint">Filter to UX issues</span>
       <div class="stat-accent" style="background:var(--orange)"></div>
       <div class="stat-label">UX Issues</div>
-      <div class="stat-value">563</div>
+      <div class="stat-value" id="statUx">563</div>
       <div class="stat-trend trend-up">↑ 9% &nbsp;·&nbsp; sidebar focus</div>
     </div>
   </div>
@@ -359,44 +359,7 @@
     <span class="section-title">Top Issue Clusters This Week</span>
     <span class="section-note">AI-grouped by similarity · ranked by volume + urgency · click to explore</span>
   </div>
-  <div class="clusters">
-    <div class="cluster" data-cat="bug" onclick="openCluster('crash')">
-      <div class="cluster-top"><span class="cluster-name">Extension host crashes on large workspaces</span><span class="badge b-bug">Bug</span></div>
-      <div class="cluster-meta">127 reports · GitHub Issues + In-App Widget · ↑ 43% this week</div>
-      <div class="bar-bg"><div class="bar" style="width:85%;background:var(--red)"></div></div>
-      <div class="cluster-signal" style="color:var(--red)">⚠ Critical · spike detected</div>
-    </div>
-    <div class="cluster" data-cat="bug" onclick="openCluster('copilot')">
-      <div class="cluster-top"><span class="cluster-name">Copilot inline suggestions lag on slow connections</span><span class="badge b-bug">Bug</span></div>
-      <div class="cluster-meta">98 reports · GitHub Issues + Support Tickets · stable</div>
-      <div class="bar-bg"><div class="bar" style="width:65%;background:var(--red)"></div></div>
-      <div class="cluster-signal" style="color:var(--dim)">Medium urgency · 2 weeks open</div>
-    </div>
-    <div class="cluster" data-cat="feature" onclick="openCluster('multicursor')">
-      <div class="cluster-top"><span class="cluster-name">Add multi-cursor support to Find &amp; Replace</span><span class="badge b-feature">Feature</span></div>
-      <div class="cluster-meta">91 reports · GitHub Issues + NPS Survey · ↑ 12% this week</div>
-      <div class="bar-bg"><div class="bar" style="width:60%;background:var(--green)"></div></div>
-      <div class="cluster-signal" style="color:var(--green)">High demand · roadmap candidate</div>
-    </div>
-    <div class="cluster" data-cat="ux" onclick="openCluster('sidebar')">
-      <div class="cluster-top"><span class="cluster-name">Sidebar panels can't be resized independently</span><span class="badge b-ux">UX</span></div>
-      <div class="cluster-meta">74 reports · Reddit + In-App Widget + G2 · ↑ 28% this week</div>
-      <div class="bar-bg"><div class="bar" style="width:50%;background:var(--orange)"></div></div>
-      <div class="cluster-signal" style="color:var(--orange)">Growing · layout issue</div>
-    </div>
-    <div class="cluster" data-cat="bug" onclick="openCluster('hidpi')">
-      <div class="cluster-top"><span class="cluster-name">Terminal font rendering broken on HiDPI displays</span><span class="badge b-bug">Bug</span></div>
-      <div class="cluster-meta">68 reports · GitHub Issues + Tech Community · stable</div>
-      <div class="bar-bg"><div class="bar" style="width:45%;background:var(--red)"></div></div>
-      <div class="cluster-signal" style="color:var(--dim)">Medium urgency · platform-specific</div>
-    </div>
-    <div class="cluster" data-cat="ux" onclick="openCluster('gitdiff')">
-      <div class="cluster-top"><span class="cluster-name">Git diff view hard to read in dark theme</span><span class="badge b-ux">UX</span></div>
-      <div class="cluster-meta">52 reports · GitHub Issues + Stack Overflow · new</div>
-      <div class="bar-bg"><div class="bar" style="width:35%;background:var(--orange)"></div></div>
-      <div class="cluster-signal" style="color:var(--yellow)">Emerging · watch this week</div>
-    </div>
-  </div>
+  <div class="clusters"></div>
 
   <!-- ── FEED ── -->
   <div class="card">
@@ -414,177 +377,7 @@
         <button class="f-btn" onclick="syncFilter(this,'ux')">🟠 UX Issues</button>
       </div>
     </div>
-    <div class="feed-list" id="feed">
-
-      <!-- INTERNAL — In-App Widget -->
-      <div class="feed-item" data-cat="bug">
-        <div class="src-icon">📱</div>
-        <div>
-          <div class="feed-text">"Extension host crashed again mid-session. Third time this week on my work repo."</div>
-          <div class="feed-meta">
-            <span>In-App Widget</span><span>1 hour ago</span>
-            <span class="feed-source-type tag-internal">Internal</span>
-            <span class="feed-cat-tag" style="background:rgba(241,76,76,.15);color:var(--red)">Bug · Critical</span>
-          </div>
-        </div>
-        <div class="u-dot u-high"></div>
-      </div>
-
-      <!-- EXTERNAL — GitHub Issues -->
-      <div class="feed-item" data-cat="bug">
-        <div class="src-icon">🐙</div>
-        <div>
-          <div class="feed-text">"Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes."</div>
-          <div class="feed-meta">
-            <span>GitHub Issues #12847</span><span>2 hours ago</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(241,76,76,.15);color:var(--red)">Bug · Critical</span>
-          </div>
-        </div>
-        <div class="u-dot u-high"></div>
-      </div>
-
-      <!-- SURVEY — NPS -->
-      <div class="feed-item" data-cat="feature">
-        <div class="src-icon">📊</div>
-        <div>
-          <div class="feed-text">"NPS Score: 8/10. Would love multi-cursor support in Find and Replace. Currently I have to run multiple searches which is slow."</div>
-          <div class="feed-meta">
-            <span>NPS Survey · User #U-4821</span><span>3 hours ago</span>
-            <span class="feed-source-type tag-survey">Survey</span>
-            <span class="feed-cat-tag" style="background:rgba(78,201,148,.15);color:var(--green)">Feature Request</span>
-          </div>
-        </div>
-        <div class="u-dot u-med"></div>
-      </div>
-
-      <!-- EXTERNAL — GitHub Issues (UX) -->
-      <div class="feed-item" data-cat="ux">
-        <div class="src-icon">🐙</div>
-        <div>
-          <div class="feed-text">"The sidebar panels can't be resized independently — they all move together. Frustrating when I want a large file explorer but a small outline panel."</div>
-          <div class="feed-meta">
-            <span>GitHub Issues #12831</span><span>8 hours ago</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(206,145,120,.15);color:var(--orange)">UX Issue</span>
-          </div>
-        </div>
-        <div class="u-dot u-med"></div>
-      </div>
-
-      <!-- INTERNAL — Support Ticket -->
-      <div class="feed-item" data-cat="bug">
-        <div class="src-icon">🎫</div>
-        <div>
-          <div class="feed-text">"Copilot suggestions have a noticeable 3–4 second delay on my home internet. Same code completes instantly at the office."</div>
-          <div class="feed-meta">
-            <span>Support Ticket #4421</span><span>12 hours ago</span>
-            <span class="feed-source-type tag-internal">Internal</span>
-            <span class="feed-cat-tag" style="background:rgba(241,76,76,.15);color:var(--red)">Bug · Medium</span>
-          </div>
-        </div>
-        <div class="u-dot u-med"></div>
-      </div>
-
-      <!-- SOCIAL — Reddit -->
-      <div class="feed-item" data-cat="feature">
-        <div class="src-icon">💬</div>
-        <div>
-          <div class="feed-text">"Please add a way to pin specific terminals so they don't get buried when I open new ones. This would save me so much time daily."</div>
-          <div class="feed-meta">
-            <span>Reddit r/vscode</span><span>Yesterday</span>
-            <span class="feed-source-type tag-social">Social</span>
-            <span class="feed-cat-tag" style="background:rgba(78,201,148,.15);color:var(--green)">Feature Request</span>
-          </div>
-        </div>
-        <div class="u-dot u-low"></div>
-      </div>
-
-      <!-- EXTERNAL — Microsoft Tech Community -->
-      <div class="feed-item" data-cat="ux">
-        <div class="src-icon">🏢</div>
-        <div>
-          <div class="feed-text">"Settings search ranking feels off. Searching 'font size' shows tokenColorCustomizations before editor.fontSize. The most common result should rank first."</div>
-          <div class="feed-meta">
-            <span>Microsoft Tech Community</span><span>Yesterday</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(206,145,120,.15);color:var(--orange)">UX Issue</span>
-          </div>
-        </div>
-        <div class="u-dot u-low"></div>
-      </div>
-
-      <!-- EXTERNAL — G2 Review -->
-      <div class="feed-item" data-cat="ux">
-        <div class="src-icon">⭐</div>
-        <div>
-          <div class="feed-text">"Great editor overall (4/5 stars). Only real complaint is that the Git diff view is nearly unreadable in dark mode. The added/removed line colors are too similar."</div>
-          <div class="feed-meta">
-            <span>G2 Review · ★★★★☆</span><span>2 days ago</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(206,145,120,.15);color:var(--orange)">UX Issue</span>
-          </div>
-        </div>
-        <div class="u-dot u-low"></div>
-      </div>
-
-      <!-- EXTERNAL — Stack Overflow -->
-      <div class="feed-item" data-cat="bug">
-        <div class="src-icon">📚</div>
-        <div>
-          <div class="feed-text">"Terminal font rendering is completely broken at 200% display scaling on Windows 11. Fira Code glyphs are clipped. Is this a known bug?"</div>
-          <div class="feed-meta">
-            <span>Stack Overflow</span><span>2 days ago</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(241,76,76,.15);color:var(--red)">Bug · Medium</span>
-          </div>
-        </div>
-        <div class="u-dot u-med"></div>
-      </div>
-
-      <!-- SURVEY — CSAT (post-support) -->
-      <div class="feed-item" data-cat="feature">
-        <div class="src-icon">📧</div>
-        <div>
-          <div class="feed-text">"CSAT: 3/5. Issue resolved but I still wish VS Code had a built-in HTTP client like JetBrains. Would reduce my need for Postman."</div>
-          <div class="feed-meta">
-            <span>Post-Support Email Survey</span><span>3 days ago</span>
-            <span class="feed-source-type tag-survey">Survey</span>
-            <span class="feed-cat-tag" style="background:rgba(78,201,148,.15);color:var(--green)">Feature Request</span>
-          </div>
-        </div>
-        <div class="u-dot u-low"></div>
-      </div>
-
-      <!-- INTERNAL — In-App Widget (feature) -->
-      <div class="feed-item" data-cat="feature">
-        <div class="src-icon">📱</div>
-        <div>
-          <div class="feed-text">"👍 Love the editor but really need AI-powered rename across files. The current F2 rename doesn't update string literals in configs."</div>
-          <div class="feed-meta">
-            <span>In-App Widget · Thumbs-up + comment</span><span>3 days ago</span>
-            <span class="feed-source-type tag-internal">Internal</span>
-            <span class="feed-cat-tag" style="background:rgba(78,201,148,.15);color:var(--green)">Feature Request</span>
-          </div>
-        </div>
-        <div class="u-dot u-low"></div>
-      </div>
-
-      <!-- EXTERNAL — Tech Community (bug) -->
-      <div class="feed-item" data-cat="bug">
-        <div class="src-icon">🏢</div>
-        <div>
-          <div class="feed-text">"After updating to v1.89.1, the Python extension's Jupyter notebook integration stopped working. Getting 'kernel not found' on every launch."</div>
-          <div class="feed-meta">
-            <span>Microsoft Tech Community</span><span>4 days ago</span>
-            <span class="feed-source-type tag-external">External</span>
-            <span class="feed-cat-tag" style="background:rgba(241,76,76,.15);color:var(--red)">Bug · High</span>
-          </div>
-        </div>
-        <div class="u-dot u-high"></div>
-      </div>
-
-    </div>
+    <div class="feed-list" id="feed"></div>
   </div>
 
   <!-- ── TREND ── -->
@@ -603,48 +396,7 @@
     <span class="section-title">Feedback Sources</span>
     <span class="section-note">8 active channels · internal &amp; external</span>
   </div>
-  <div class="source-grid">
-    <div class="source-chip">
-      <span class="source-icon-sm">🐙</span>
-      <div class="source-info"><div class="source-name">GitHub Issues</div><div class="source-count">1,142 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📱</span>
-      <div class="source-info"><div class="source-name">In-App Widget</div><div class="source-count">487 items</div></div>
-      <span class="source-type-tag tag-internal">Internal</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📊</span>
-      <div class="source-info"><div class="source-name">NPS / CSAT Survey</div><div class="source-count">374 items</div></div>
-      <span class="source-type-tag tag-survey">Survey</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">💬</span>
-      <div class="source-info"><div class="source-name">Reddit r/vscode</div><div class="source-count">268 items</div></div>
-      <span class="source-type-tag tag-social">Social</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">🎫</span>
-      <div class="source-info"><div class="source-name">Support Tickets</div><div class="source-count">211 items</div></div>
-      <span class="source-type-tag tag-internal">Internal</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">🏢</span>
-      <div class="source-info"><div class="source-name">Tech Community</div><div class="source-count">163 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">⭐</span>
-      <div class="source-info"><div class="source-name">G2 / Capterra</div><div class="source-count">128 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-    <div class="source-chip">
-      <span class="source-icon-sm">📚</span>
-      <div class="source-info"><div class="source-name">Stack Overflow</div><div class="source-count">74 items</div></div>
-      <span class="source-type-tag tag-external">External</span>
-    </div>
-  </div>
+  <div class="source-grid"></div>
 
 </main>
 
@@ -668,75 +420,116 @@
 </div>
 
 <script>
-// ── Cluster data ──
-const CLUSTERS = {
-  crash: {
-    name: 'Extension host crashes on large workspaces', badge: 'Bug', badgeClass: 'b-bug',
-    count: 127, growth: '+43%', urgency: 'Critical', urgencyColor: '#f14c4c',
-    sources: 'GitHub Issues (89), In-App Widget (24), Support Tickets (14)',
-    firstSeen: 'April 18, 2026', affectedVersions: 'v1.89.0, v1.89.1',
-    items: [
-      { text: '"Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes."', meta: 'GitHub Issues #12847 · 2h ago' },
-      { text: '"Crashed again mid-session. Third time this week on my work repo."', meta: 'In-App Widget · 1h ago' },
-      { text: '"Extension host process died. My workspace has ~60 packages and it happens on startup now."', meta: 'GitHub Issues #12801 · 1d ago' },
-    ]
+/* DATA_START */
+const LIVE_DATA = {
+  generated_at: "2026-05-05T09:00:00Z",
+  totals: { bug: 1203, feature_request: 1081, ux_issue: 563 },
+  by_source: {
+    github_issues: 1142, in_app_widget: 487, nps_survey: 374,
+    reddit: 268, support_ticket: 211, tech_community: 163,
+    g2_review: 128, stack_overflow: 74
   },
-  copilot: {
-    name: 'Copilot inline suggestions lag on slow connections', badge: 'Bug', badgeClass: 'b-bug',
-    count: 98, growth: 'stable', urgency: 'Medium', urgencyColor: '#dcdcaa',
-    sources: 'GitHub Issues (61), Support Tickets (22), Reddit (15)',
-    firstSeen: 'April 21, 2026', affectedVersions: 'v1.89.x (all)',
-    items: [
-      { text: '"Copilot suggestions take 3–4 seconds on my home internet. Instant at the office."', meta: 'Support Ticket #4421 · 12h ago' },
-      { text: '"Inline completions are unusable on any connection under 50Mbps. No timeout fallback."', meta: 'GitHub Issues #12799 · 2d ago' },
-      { text: '"The delay is worse than before. Used to be fast even on hotspot."', meta: 'Reddit r/vscode · 3d ago' },
-    ]
+  by_product_area: {
+    extensions: 312, copilot: 287, sidebar: 201, terminal: 188,
+    git: 143, editor: 134, settings: 98, debugging: 76
   },
-  multicursor: {
-    name: 'Add multi-cursor support to Find & Replace', badge: 'Feature', badgeClass: 'b-feature',
-    count: 91, growth: '+12%', urgency: 'Low', urgencyColor: '#4ec994',
-    sources: 'GitHub Issues (58), NPS Survey (21), Reddit (12)',
-    firstSeen: 'March 3, 2026', affectedVersions: 'All versions',
-    items: [
-      { text: '"Would love multi-cursor in Find & Replace. Currently I run multiple searches which is tedious."', meta: 'NPS Survey · 3h ago' },
-      { text: '"Sublime Text has this. Please add it — it would save so much time for bulk edits."', meta: 'GitHub Issues #12756 · 4d ago' },
-      { text: '"This is the one feature keeping me from fully switching from Sublime."', meta: 'GitHub Issues #12701 · 6d ago' },
-    ]
-  },
-  sidebar: {
-    name: "Sidebar panels can't be resized independently", badge: 'UX', badgeClass: 'b-ux',
-    count: 74, growth: '+28%', urgency: 'Medium', urgencyColor: '#dcdcaa',
-    sources: 'GitHub Issues (32), Reddit (21), In-App Widget (12), G2 (9)',
-    firstSeen: 'April 28, 2026', affectedVersions: 'All versions',
-    items: [
-      { text: '"Sidebar panels all resize together. I want a large file explorer but a small outline panel."', meta: 'GitHub Issues #12831 · 8h ago' },
-      { text: '"The lack of independent panel resizing is driving me crazy."', meta: 'Reddit r/vscode · 1d ago' },
-      { text: '"Please let me set different heights for Explorer, Outline, and Timeline panels."', meta: 'In-App Widget · 2d ago' },
-    ]
-  },
-  hidpi: {
-    name: 'Terminal font rendering broken on HiDPI displays', badge: 'Bug', badgeClass: 'b-bug',
-    count: 68, growth: 'stable', urgency: 'Medium', urgencyColor: '#dcdcaa',
-    sources: 'GitHub Issues (48), Microsoft Tech Community (14), Stack Overflow (6)',
-    firstSeen: 'April 10, 2026', affectedVersions: 'v1.88.x, v1.89.x',
-    items: [
-      { text: '"Terminal font is blurry on my 4K display. Editor fonts look fine, only terminal affected."', meta: 'GitHub Issues #12788 · 3d ago' },
-      { text: '"Terminal font rendering is completely broken at 200% scaling on Windows 11."', meta: 'Stack Overflow · 2d ago' },
-      { text: '"HiDPI font rendering regression since v1.88. Especially bad with Fira Code."', meta: 'Microsoft Tech Community · 5d ago' },
-    ]
-  },
-  gitdiff: {
-    name: 'Git diff view hard to read in dark theme', badge: 'UX', badgeClass: 'b-ux',
-    count: 52, growth: 'new', urgency: 'Low', urgencyColor: '#4ec994',
-    sources: 'GitHub Issues (34), G2 Reviews (10), CSAT Survey (8)',
-    firstSeen: 'May 1, 2026', affectedVersions: 'All dark themes',
-    items: [
-      { text: '"The diff view contrast is too low. Hard to distinguish additions from deletions."', meta: 'GitHub Issues #12841 · 1d ago' },
-      { text: '"Git diff is nearly unreadable in dark mode. Added/removed line colors are too similar."', meta: 'G2 Review · 2d ago' },
-      { text: '"Please improve the diff colors for dark themes — the green/red are very muted."', meta: 'GitHub Issues #12822 · 3d ago' },
-    ]
-  }
+  clusters: [
+    {
+      title: "Extension host crashes on large workspaces",
+      category: "bug",
+      item_count: 127,
+      sources: "GitHub Issues + In-App Widget",
+      growth: "+43%",
+      urgency: "critical",
+      signal: "spike detected",
+      sample_texts: [
+        { text: "Extension host keeps crashing when I open my monorepo with 40+ packages.", meta: "GitHub Issues #12847 · 2h ago" },
+        { text: "Crashed again mid-session. Third time this week on my work repo.", meta: "In-App Widget · 1h ago" },
+        { text: "Extension host process died. My workspace has ~60 packages.", meta: "GitHub Issues #12801 · 1d ago" }
+      ]
+    },
+    {
+      title: "Copilot inline suggestions lag on slow connections",
+      category: "bug",
+      item_count: 98,
+      sources: "GitHub Issues + Support Tickets",
+      growth: "stable",
+      urgency: "medium",
+      signal: "2 weeks open",
+      sample_texts: [
+        { text: "Copilot suggestions take 3-4 seconds on my home internet.", meta: "Support Ticket #4421 · 12h ago" },
+        { text: "Inline completions are unusable on any connection under 50Mbps.", meta: "GitHub Issues #12799 · 2d ago" }
+      ]
+    },
+    {
+      title: "Add multi-cursor support to Find & Replace",
+      category: "feature_request",
+      item_count: 91,
+      sources: "GitHub Issues + NPS Survey",
+      growth: "+12%",
+      urgency: "low",
+      signal: "roadmap candidate",
+      sample_texts: [
+        { text: "Would love multi-cursor in Find & Replace. Currently I run multiple searches.", meta: "NPS Survey · 3h ago" },
+        { text: "Sublime Text has this. Please add it.", meta: "GitHub Issues #12756 · 4d ago" }
+      ]
+    },
+    {
+      title: "Sidebar panels can't be resized independently",
+      category: "ux_issue",
+      item_count: 74,
+      sources: "Reddit + In-App Widget + G2",
+      growth: "+28%",
+      urgency: "medium",
+      signal: "layout issue",
+      sample_texts: [
+        { text: "Sidebar panels all resize together. I want independent sizing.", meta: "GitHub Issues #12831 · 8h ago" },
+        { text: "The lack of independent panel resizing is driving me crazy.", meta: "Reddit r/vscode · 1d ago" }
+      ]
+    },
+    {
+      title: "Terminal font rendering broken on HiDPI displays",
+      category: "bug",
+      item_count: 68,
+      sources: "GitHub Issues + Tech Community",
+      growth: "stable",
+      urgency: "medium",
+      signal: "platform-specific",
+      sample_texts: [
+        { text: "Terminal font is blurry on my 4K display. Editor fonts look fine.", meta: "GitHub Issues #12788 · 3d ago" },
+        { text: "Terminal font rendering broken at 200% scaling on Windows 11.", meta: "Stack Overflow · 2d ago" }
+      ]
+    },
+    {
+      title: "Git diff view hard to read in dark theme",
+      category: "ux_issue",
+      item_count: 52,
+      sources: "GitHub Issues + G2",
+      growth: "new",
+      urgency: "low",
+      signal: "watch this week",
+      sample_texts: [
+        { text: "The diff view contrast is too low in dark mode.", meta: "GitHub Issues #12841 · 1d ago" },
+        { text: "Git diff is nearly unreadable in dark mode. Colors are too similar.", meta: "G2 Review · 2d ago" }
+      ]
+    }
+  ],
+  recent: [
+    { text: "Extension host crashed again mid-session. Third time this week on my work repo.", source: "In-App Widget", time: "1 hour ago", source_type: "internal", category: "bug", urgency: "critical", icon: "📱" },
+    { text: "Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes.", source: "GitHub Issues #12847", time: "2 hours ago", source_type: "external", category: "bug", urgency: "critical", icon: "🐙" },
+    { text: "NPS Score: 8/10. Would love multi-cursor support in Find and Replace. Currently I have to run multiple searches which is slow.", source: "NPS Survey · User #U-4821", time: "3 hours ago", source_type: "survey", category: "feature_request", urgency: "medium", icon: "📊" },
+    { text: "The sidebar panels can't be resized independently — they all move together.", source: "GitHub Issues #12831", time: "8 hours ago", source_type: "external", category: "ux_issue", urgency: "medium", icon: "🐙" },
+    { text: "Copilot suggestions have a noticeable 3-4 second delay on my home internet.", source: "Support Ticket #4421", time: "12 hours ago", source_type: "internal", category: "bug", urgency: "medium", icon: "🎫" },
+    { text: "Please add a way to pin specific terminals so they don't get buried.", source: "Reddit r/vscode", time: "Yesterday", source_type: "social", category: "feature_request", urgency: "low", icon: "💬" },
+    { text: "Settings search ranking feels off. Searching 'font size' shows wrong result first.", source: "Microsoft Tech Community", time: "Yesterday", source_type: "external", category: "ux_issue", urgency: "low", icon: "🏢" },
+    { text: "Great editor overall (4/5 stars). Git diff view is nearly unreadable in dark mode.", source: "G2 Review · ★★★★☆", time: "2 days ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "⭐" },
+    { text: "Terminal font rendering is completely broken at 200% display scaling on Windows 11.", source: "Stack Overflow", time: "2 days ago", source_type: "external", category: "bug", urgency: "medium", icon: "📚" },
+    { text: "CSAT: 3/5. Wish VS Code had a built-in HTTP client like JetBrains.", source: "Post-Support Email Survey", time: "3 days ago", source_type: "survey", category: "feature_request", urgency: "low", icon: "📧" },
+    { text: "Love the editor but really need AI-powered rename across files.", source: "In-App Widget", time: "3 days ago", source_type: "internal", category: "feature_request", urgency: "low", icon: "📱" },
+    { text: "After updating to v1.89.1, Jupyter notebook integration stopped working.", source: "Microsoft Tech Community", time: "4 days ago", source_type: "external", category: "bug", urgency: "high", icon: "🏢" }
+  ]
 };
+/* DATA_END */
 
 // ── Chart data ──
 const DAYS = Array.from({length:30},(_,i)=>{
@@ -851,21 +644,22 @@ function syncFilter(btn, cat) {
 }
 
 // ── Cluster modal ──
-function openCluster(key) {
-  const c = CLUSTERS[key];
-  document.getElementById('modalTitle').textContent = c.name;
+function openClusterByIndex(idx) {
+  const c = LIVE_DATA.clusters[idx];
+  if (!c) return;
+  const catBadge = { bug: ['Bug','b-bug'], feature_request: ['Feature','b-feature'], ux_issue: ['UX','b-ux'] };
+  const [badgeLabel, badgeClass] = catBadge[c.category] || ['Other','b-bug'];
+  document.getElementById('modalTitle').textContent = c.title;
   document.getElementById('modalBody').innerHTML = `
     <div>
-      <div class="modal-stat-row"><span class="modal-stat-label">Category</span><span class="modal-stat-value"><span class="badge ${c.badgeClass}">${c.badge}</span></span></div>
-      <div class="modal-stat-row"><span class="modal-stat-label">Total Reports</span><span class="modal-stat-value">${c.count}</span></div>
-      <div class="modal-stat-row"><span class="modal-stat-label">Week-over-Week</span><span class="modal-stat-value" style="color:${c.urgencyColor}">${c.growth}</span></div>
-      <div class="modal-stat-row"><span class="modal-stat-label">Urgency</span><span class="modal-stat-value" style="color:${c.urgencyColor}">${c.urgency}</span></div>
+      <div class="modal-stat-row"><span class="modal-stat-label">Category</span><span class="modal-stat-value"><span class="badge ${badgeClass}">${badgeLabel}</span></span></div>
+      <div class="modal-stat-row"><span class="modal-stat-label">Total Reports</span><span class="modal-stat-value">${c.item_count}</span></div>
+      <div class="modal-stat-row"><span class="modal-stat-label">Trend</span><span class="modal-stat-value">${c.growth}</span></div>
+      <div class="modal-stat-row"><span class="modal-stat-label">Urgency</span><span class="modal-stat-value">${c.urgency}</span></div>
       <div class="modal-stat-row"><span class="modal-stat-label">Sources</span><span class="modal-stat-value">${c.sources}</span></div>
-      <div class="modal-stat-row"><span class="modal-stat-label">First Seen</span><span class="modal-stat-value">${c.firstSeen}</span></div>
-      <div class="modal-stat-row"><span class="modal-stat-label">Affected Versions</span><span class="modal-stat-value">${c.affectedVersions}</span></div>
     </div>
     <div class="modal-items-title">Sample Reports</div>
-    ${c.items.map(i=>`<div class="modal-item">${i.text}<div class="modal-item-meta">${i.meta}</div></div>`).join('')}
+    ${(c.sample_texts || []).map(s => `<div class="modal-item">"${s.text}"<div class="modal-item-meta">${s.meta}</div></div>`).join('')}
   `;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -876,6 +670,108 @@ function closeModal(e) {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+
+function renderFromData() {
+  const d = LIVE_DATA;
+  const total = d.totals.bug + d.totals.feature_request + d.totals.ux_issue;
+
+  // Stat cards
+  document.getElementById('statTotal').textContent = total.toLocaleString();
+  document.getElementById('statBug').textContent = d.totals.bug.toLocaleString();
+  document.getElementById('statFeature').textContent = d.totals.feature_request.toLocaleString();
+  document.getElementById('statUx').textContent = d.totals.ux_issue.toLocaleString();
+  document.querySelector('.donut-center-num').textContent = total.toLocaleString();
+
+  // Timestamp
+  if (d.generated_at) {
+    const ts = new Date(d.generated_at);
+    document.querySelector('.header-ts').textContent =
+      'Last refreshed: ' + ts.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+      ' · ' + ts.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short' });
+  }
+
+  // Product area bars
+  const areaContainer = document.getElementById('productAreaBars');
+  if (areaContainer && d.by_product_area) {
+    const areas = Object.entries(d.by_product_area).sort((a, b) => b[1] - a[1]);
+    const maxVal = areas[0]?.[1] || 1;
+    areaContainer.innerHTML = areas.map(([area, count]) => {
+      const pct = Math.round((count / maxVal) * 100);
+      const color = pct > 80 ? 'var(--red)' : pct > 50 ? 'var(--orange)' : pct > 30 ? 'var(--yellow)' : 'var(--dim)';
+      return `<div class="area-bar-row"><span class="area-bar-label">${area}</span><div class="area-bar-track"><div class="area-bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="area-bar-count">${count}</span></div>`;
+    }).join('');
+  }
+
+  // Source chips
+  const sourceGrid = document.querySelector('.source-grid');
+  if (sourceGrid && d.by_source) {
+    const sourceIcons = { github_issues:'🐙', in_app_widget:'📱', nps_survey:'📊', reddit:'💬', support_ticket:'🎫', tech_community:'🏢', g2_review:'⭐', stack_overflow:'📚', csat_survey:'📊', email_survey:'📧', capterra_review:'⭐' };
+    const sourceNames = { github_issues:'GitHub Issues', in_app_widget:'In-App Widget', nps_survey:'NPS / CSAT Survey', reddit:'Reddit r/vscode', support_ticket:'Support Tickets', tech_community:'Tech Community', g2_review:'G2 / Capterra', stack_overflow:'Stack Overflow', csat_survey:'CSAT Survey', email_survey:'Email Survey', capterra_review:'Capterra' };
+    const sourceTypes = { github_issues:'external', in_app_widget:'internal', nps_survey:'survey', reddit:'social', support_ticket:'internal', tech_community:'external', g2_review:'external', stack_overflow:'external', csat_survey:'survey', email_survey:'survey', capterra_review:'external' };
+    const tagClasses = { internal:'tag-internal', external:'tag-external', social:'tag-social', survey:'tag-survey' };
+    const sorted = Object.entries(d.by_source).sort((a, b) => b[1] - a[1]);
+    sourceGrid.innerHTML = sorted.map(([src, count]) => {
+      const st = sourceTypes[src] || 'external';
+      return `<div class="source-chip"><span class="source-icon-sm">${sourceIcons[src]||'📄'}</span><div class="source-info"><div class="source-name">${sourceNames[src]||src}</div><div class="source-count">${count.toLocaleString()} items</div></div><span class="source-type-tag ${tagClasses[st]||'tag-external'}">${st}</span></div>`;
+    }).join('');
+  }
+
+  // Clusters
+  const clustersContainer = document.querySelector('.clusters');
+  if (clustersContainer && d.clusters) {
+    const catBadge = { bug: ['Bug','b-bug'], feature_request: ['Feature','b-feature'], ux_issue: ['UX','b-ux'] };
+    const maxCount = Math.max(...d.clusters.map(c => c.item_count));
+    clustersContainer.innerHTML = d.clusters.map((c, i) => {
+      const [badgeLabel, badgeClass] = catBadge[c.category] || ['Other','b-bug'];
+      const barPct = Math.round((c.item_count / maxCount) * 100);
+      const barColor = c.category === 'bug' ? 'var(--red)' : c.category === 'feature_request' ? 'var(--green)' : 'var(--orange)';
+      const sigColor = c.urgency === 'critical' ? 'var(--red)' : c.urgency === 'high' ? 'var(--red)' : c.growth === 'new' ? 'var(--yellow)' : c.category === 'ux_issue' ? 'var(--orange)' : 'var(--dim)';
+      const urgLabel = c.urgency === 'critical' ? '⚠ Critical' : c.urgency === 'high' ? 'High urgency' : c.urgency === 'medium' ? 'Medium urgency' : 'High demand';
+      const catFilter = c.category === 'feature_request' ? 'feature' : c.category === 'ux_issue' ? 'ux' : 'bug';
+      return `<div class="cluster" data-cat="${catFilter}" onclick="openClusterByIndex(${i})">
+        <div class="cluster-top"><span class="cluster-name">${c.title}</span><span class="badge ${badgeClass}">${badgeLabel}</span></div>
+        <div class="cluster-meta">${c.item_count} reports · ${c.sources} · ${c.growth === 'stable' ? 'stable' : c.growth === 'new' ? 'new' : c.growth + ' this week'}</div>
+        <div class="bar-bg"><div class="bar" style="width:${barPct}%;background:${barColor}"></div></div>
+        <div class="cluster-signal" style="color:${sigColor}">${urgLabel} · ${c.signal}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Recent feed
+  const feedList = document.getElementById('feed');
+  if (feedList && d.recent) {
+    const catColors = { bug: 'rgba(241,76,76,.15)', feature_request: 'rgba(78,201,148,.15)', ux_issue: 'rgba(206,145,120,.15)' };
+    const catTextColors = { bug: 'var(--red)', feature_request: 'var(--green)', ux_issue: 'var(--orange)' };
+    const catLabels = { bug: 'Bug', feature_request: 'Feature Request', ux_issue: 'UX Issue' };
+    const tagClasses = { internal:'tag-internal', external:'tag-external', social:'tag-social', survey:'tag-survey' };
+    const urgDot = { critical:'u-high', high:'u-high', medium:'u-med', low:'u-low' };
+    const catFilter = { bug:'bug', feature_request:'feature', ux_issue:'ux' };
+    feedList.innerHTML = d.recent.map(item => {
+      const urgLabel = item.urgency !== 'low' ? ' · ' + item.urgency.charAt(0).toUpperCase() + item.urgency.slice(1) : '';
+      return `<div class="feed-item" data-cat="${catFilter[item.category] || item.category}">
+        <div class="src-icon">${item.icon}</div>
+        <div>
+          <div class="feed-text">"${item.text}"</div>
+          <div class="feed-meta">
+            <span>${item.source}</span><span>${item.time}</span>
+            <span class="feed-source-type ${tagClasses[item.source_type]||'tag-external'}">${item.source_type}</span>
+            <span class="feed-cat-tag" style="background:${catColors[item.category]};color:${catTextColors[item.category]}">${catLabels[item.category]}${urgLabel}</span>
+          </div>
+        </div>
+        <div class="u-dot ${urgDot[item.urgency]||'u-low'}"></div>
+      </div>`;
+    }).join('');
+    document.getElementById('feedCount').textContent = d.recent.length;
+  }
+
+  // Update donut chart data
+  if (typeof donutChart !== 'undefined') {
+    donutChart.data.datasets[0].data = [d.totals.bug, d.totals.feature_request, d.totals.ux_issue];
+    donutChart.update();
+  }
+}
+
+renderFromData();
 </script>
 </body>
 </html>
