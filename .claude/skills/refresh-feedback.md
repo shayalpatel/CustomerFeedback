@@ -7,7 +7,7 @@ description: Runs the VS Code customer feedback classification pipeline. Reads r
 
 You are running the Customer Feedback Intelligence pipeline for VS Code.
 
-**Project location:** /Users/shayalpatel/Documents/Claude Projects/Customer Feedback Loop
+All file paths in this skill are relative to the project root (where CLAUDE.md lives).
 
 ## Step 1: Identify new items
 
@@ -29,6 +29,8 @@ For each new item, determine:
   - ux_issue: product works but is confusing, frustrating, or inefficient
   - praise: positive feedback
 
+Note: `praise` items should be classified as such but excluded from category totals in Step 4 and not clustered in Step 3.
+
 - **sub_category:** a short label for the specific type (e.g., crash, performance, new_feature, navigation, visual_design)
 
 - **sentiment:** `positive` | `neutral` | `negative`
@@ -45,7 +47,7 @@ For each new item, determine:
 
 Consider context, tone, and intent — not just keywords. "I have to manually do X every time" is a feature_request. A 1-star review that says "great UI but crashes constantly" is primarily a bug.
 
-Process in batches of approximately 100 items. After each batch, append the classified items to `data/processed/feedback_classified.json` before continuing to the next batch. This ensures no work is lost if the session is interrupted.
+Process in batches of approximately 100 items. After each batch: read the existing `data/processed/feedback_classified.json` (as an array, or start with an empty array if the file does not exist), add the newly classified items to the array, and write the full array back to the file. This read-merge-write pattern ensures prior batches are preserved.
 
 Each classified item should include all original fields from the raw item plus the classification fields and a `classified_at` timestamp (ISO 8601).
 
@@ -60,7 +62,7 @@ For each cluster, record:
 - category: the dominant category
 - item_count: how many items belong
 - sources: which data sources contributed
-- growth: estimate if growing, stable, or new (compare timestamps)
+- growth: estimate if growing, stable, or new (compare timestamps). Use this rule: if all items appeared within the last 7 days, mark as `new`; if items from the last 7 days outnumber items from 8-30 days ago, mark as `growing`; otherwise mark as `stable`. Include the percentage change if growing (e.g., '+28%').
 - urgency: the highest urgency among members
 - signal: a short status phrase (e.g., "spike detected", "2 weeks open", "watch this week")
 - sample_texts: 2-3 representative quotes with source/time metadata
@@ -76,14 +78,14 @@ Compute:
 - counts by source
 - counts by product_area
 - list of critical items
-- top clusters (from clusters.json)
+- top clusters (from clusters.json — if `data/processed/clusters.json` does not exist, use an empty array for `top_clusters`)
 
 Write to `data/processed/feedback_summary.json`:
 
 ```json
 {
   "generated_at": "ISO 8601 timestamp",
-  "totals": { "bug": N, "feature_request": N, "ux_issue": N },
+  "totals": { "bug": N, "feature_request": N, "ux_issue": N },  // totals counts only bug, feature_request, ux_issue — exclude praise items
   "by_source": { "github_issues": N, ... },
   "by_product_area": { "extensions": N, ... },
   "critical_items": [ ... ],
