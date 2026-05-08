@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Extension host crashes causing data loss",
+    "category": "bug",
+    "item_count": 4,
+    "sources": ["in_app_widget", "reddit", "capterra_review", "support_ticket"],
+    "growth": "new",
+    "urgency": "critical",
+    "signal": "spike detected — all reports within last 7 days",
+    "sample_texts": [
+      { "text": "Extension host crashed again mid-session. Third time this week on my work repo.", "meta": "In-App Widget · May 5" },
+      { "text": "Extension host keeps crashing with Data Loss Studio extension. Losing unsaved work every day. This is a critical issue.", "meta": "Support Ticket #4415 · May 3" },
+      { "text": "Extension host crashes are a major issue that have caused me data loss. Needs better stability.", "meta": "Capterra Review · Apr 30" }
+    ]
+  },
+  {
+    "title": "AgentHost remote reconnection failures",
+    "category": "bug",
+    "item_count": 3,
+    "sources": ["github_issues"],
+    "growth": "new",
+    "urgency": "high",
+    "signal": "3 reports today — watch this week",
+    "sample_texts": [
+      { "text": "AgentHost: reconnection issues with tunnels/ssh. Restarting the app is the only fix.", "meta": "GitHub #315104 · May 7" },
+      { "text": "Stuff breaks if I try to reopen a remote session before we have fully reconnected. Empty screen.", "meta": "GitHub #315126 · May 7" },
+      { "text": "I see my sessions but I don't see their current in-progress state. Two instances stepping on toes.", "meta": "GitHub #314887 · May 7" }
+    ]
+  },
+  {
+    "title": "Copilot suggestion latency on slower connections",
+    "category": "ux_issue",
+    "item_count": 3,
+    "sources": ["in_app_widget", "support_ticket", "nps_survey"],
+    "growth": "new",
+    "urgency": "high",
+    "signal": "consistent reports across 3 channels",
+    "sample_texts": [
+      { "text": "Copilot suggestions have a noticeable 3-4 second delay on my home internet. This is blocking my workflow.", "meta": "Support Ticket #4421 · May 4" },
+      { "text": "Love the new Copilot integration but it's really laggy. Takes forever to get suggestions sometimes.", "meta": "In-App Widget · May 3" },
+      { "text": "NPS Score: 9/10. Copilot integration is amazing but the latency on slower connections is really noticeable.", "meta": "NPS Survey · May 3" }
+    ]
+  },
+  {
+    "title": "Extension marketplace search hard to navigate",
+    "category": "ux_issue",
+    "item_count": 3,
+    "sources": ["tech_community", "g2_review", "nps_survey"],
+    "growth": "stable",
+    "urgency": "medium",
+    "signal": "2 weeks open",
+    "sample_texts": [
+      { "text": "The marketplace search results are confusing. Extensions with similar names make it hard to find what I need.", "meta": "Tech Community · Apr 27" },
+      { "text": "Extension marketplace is excellent but search needs improvement. Too many similar extensions.", "meta": "G2 Review · Apr 29" },
+      { "text": "NPS Score: 6/10. The extension management UI could be much cleaner. Hard to find extensions I'm looking for.", "meta": "NPS Survey · Apr 29" }
+    ]
+  }
+]

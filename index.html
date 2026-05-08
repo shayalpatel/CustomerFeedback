@@ -430,111 +430,90 @@
 <script>
 /* DATA_START */
 const LIVE_DATA = {
-  generated_at: "2026-05-05T09:00:00Z",
-  totals: { bug: 1203, feature_request: 1081, ux_issue: 563 },
+  generated_at: "2026-05-07T12:00:00Z",
+  totals: { bug: 28, feature_request: 17, ux_issue: 17 },
   by_source: {
-    github_issues: 1142, in_app_widget: 487, nps_survey: 374,
-    reddit: 268, support_ticket: 211, tech_community: 163,
-    g2_review: 128, stack_overflow: 74
+    github_issues: 27, in_app_widget: 8, support_ticket: 8,
+    nps_survey: 4, reddit: 4, g2_review: 4,
+    csat_survey: 3, email_survey: 3, stack_overflow: 3,
+    tech_community: 3, capterra_review: 2
   },
   by_product_area: {
-    extensions: 312, copilot: 287, sidebar: 201, terminal: 188,
-    git: 143, editor: 134, settings: 98, debugging: 76
+    copilot: 23, editor: 8, extensions: 7, remote: 6,
+    settings: 5, terminal: 4, git: 3, themes: 3,
+    workspaces: 3, search: 2, debugging: 2, sidebar: 1
   },
   clusters: [
     {
-      title: "Extension host crashes on large workspaces",
+      title: "Extension host crashes causing data loss",
       category: "bug",
-      item_count: 127,
-      sources: "GitHub Issues + In-App Widget",
-      growth: "+43%",
+      item_count: 4,
+      sources: "In-App Widget + Reddit + Capterra + Support",
+      growth: "new",
       urgency: "critical",
-      signal: "spike detected",
+      signal: "spike detected — all reports within last 7 days",
       sample_texts: [
-        { text: "Extension host keeps crashing when I open my monorepo with 40+ packages.", meta: "GitHub Issues #12847 · 2h ago" },
-        { text: "Crashed again mid-session. Third time this week on my work repo.", meta: "In-App Widget · 1h ago" },
-        { text: "Extension host process died. My workspace has ~60 packages.", meta: "GitHub Issues #12801 · 1d ago" }
+        { text: "Extension host crashed again mid-session. Third time this week on my work repo.", meta: "In-App Widget · May 5" },
+        { text: "Extension host keeps crashing with Data Loss Studio extension. Losing unsaved work every day.", meta: "Support Ticket #4415 · May 3" },
+        { text: "Extension host crashes are a major issue that have caused me data loss.", meta: "Capterra Review · Apr 30" }
       ]
     },
     {
-      title: "Copilot inline suggestions lag on slow connections",
+      title: "AgentHost remote reconnection failures",
       category: "bug",
-      item_count: 98,
-      sources: "GitHub Issues + Support Tickets",
+      item_count: 3,
+      sources: "GitHub Issues",
+      growth: "new",
+      urgency: "high",
+      signal: "3 reports today — watch this week",
+      sample_texts: [
+        { text: "AgentHost: reconnection issues with tunnels/ssh. Restarting the app is the only fix.", meta: "GitHub #315104 · May 7" },
+        { text: "Stuff breaks if I try to reopen a remote session before we have fully reconnected.", meta: "GitHub #315126 · May 7" },
+        { text: "I see my sessions but I don't see their current in-progress state. Two instances stepping on toes.", meta: "GitHub #314887 · May 7" }
+      ]
+    },
+    {
+      title: "Copilot suggestion latency on slower connections",
+      category: "ux_issue",
+      item_count: 3,
+      sources: "In-App Widget + Support + NPS Survey",
+      growth: "new",
+      urgency: "high",
+      signal: "consistent reports across 3 channels",
+      sample_texts: [
+        { text: "Copilot suggestions have a noticeable 3-4 second delay on my home internet. This is blocking my workflow.", meta: "Support Ticket #4421 · May 4" },
+        { text: "Love the new Copilot integration but it's really laggy. Takes forever to get suggestions.", meta: "In-App Widget · May 3" },
+        { text: "NPS 9/10. Copilot is amazing but the latency on slower connections is really noticeable.", meta: "NPS Survey · May 3" }
+      ]
+    },
+    {
+      title: "Extension marketplace search hard to navigate",
+      category: "ux_issue",
+      item_count: 3,
+      sources: "Tech Community + G2 + NPS Survey",
       growth: "stable",
       urgency: "medium",
       signal: "2 weeks open",
       sample_texts: [
-        { text: "Copilot suggestions take 3-4 seconds on my home internet.", meta: "Support Ticket #4421 · 12h ago" },
-        { text: "Inline completions are unusable on any connection under 50Mbps.", meta: "GitHub Issues #12799 · 2d ago" }
-      ]
-    },
-    {
-      title: "Add multi-cursor support to Find & Replace",
-      category: "feature_request",
-      item_count: 91,
-      sources: "GitHub Issues + NPS Survey",
-      growth: "+12%",
-      urgency: "low",
-      signal: "roadmap candidate",
-      sample_texts: [
-        { text: "Would love multi-cursor in Find & Replace. Currently I run multiple searches.", meta: "NPS Survey · 3h ago" },
-        { text: "Sublime Text has this. Please add it.", meta: "GitHub Issues #12756 · 4d ago" }
-      ]
-    },
-    {
-      title: "Sidebar panels can't be resized independently",
-      category: "ux_issue",
-      item_count: 74,
-      sources: "Reddit + In-App Widget + G2",
-      growth: "+28%",
-      urgency: "medium",
-      signal: "layout issue",
-      sample_texts: [
-        { text: "Sidebar panels all resize together. I want independent sizing.", meta: "GitHub Issues #12831 · 8h ago" },
-        { text: "The lack of independent panel resizing is driving me crazy.", meta: "Reddit r/vscode · 1d ago" }
-      ]
-    },
-    {
-      title: "Terminal font rendering broken on HiDPI displays",
-      category: "bug",
-      item_count: 68,
-      sources: "GitHub Issues + Tech Community",
-      growth: "stable",
-      urgency: "medium",
-      signal: "platform-specific",
-      sample_texts: [
-        { text: "Terminal font is blurry on my 4K display. Editor fonts look fine.", meta: "GitHub Issues #12788 · 3d ago" },
-        { text: "Terminal font rendering broken at 200% scaling on Windows 11.", meta: "Stack Overflow · 2d ago" }
-      ]
-    },
-    {
-      title: "Git diff view hard to read in dark theme",
-      category: "ux_issue",
-      item_count: 52,
-      sources: "GitHub Issues + G2",
-      growth: "new",
-      urgency: "low",
-      signal: "watch this week",
-      sample_texts: [
-        { text: "The diff view contrast is too low in dark mode.", meta: "GitHub Issues #12841 · 1d ago" },
-        { text: "Git diff is nearly unreadable in dark mode. Colors are too similar.", meta: "G2 Review · 2d ago" }
+        { text: "The marketplace search results are confusing. Extensions with similar names make it hard to find what I need.", meta: "Tech Community · Apr 27" },
+        { text: "Extension marketplace is excellent but search needs improvement. Too many similar extensions.", meta: "G2 Review · Apr 29" },
+        { text: "NPS 6/10. The extension management UI could be much cleaner. Hard to find extensions I'm looking for.", meta: "NPS Survey · Apr 29" }
       ]
     }
   ],
   recent: [
-    { text: "Extension host crashed again mid-session. Third time this week on my work repo.", source: "In-App Widget", time: "1 hour ago", source_type: "internal", category: "bug", urgency: "critical", icon: "📱" },
-    { text: "Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes.", source: "GitHub Issues #12847", time: "2 hours ago", source_type: "external", category: "bug", urgency: "critical", icon: "🐙" },
-    { text: "NPS Score: 8/10. Would love multi-cursor support in Find and Replace. Currently I have to run multiple searches which is slow.", source: "NPS Survey · User #U-4821", time: "3 hours ago", source_type: "survey", category: "feature_request", urgency: "medium", icon: "📊" },
-    { text: "The sidebar panels can't be resized independently — they all move together.", source: "GitHub Issues #12831", time: "8 hours ago", source_type: "external", category: "ux_issue", urgency: "medium", icon: "🐙" },
-    { text: "Copilot suggestions have a noticeable 3-4 second delay on my home internet.", source: "Support Ticket #4421", time: "12 hours ago", source_type: "internal", category: "bug", urgency: "medium", icon: "🎫" },
-    { text: "Please add a way to pin specific terminals so they don't get buried.", source: "Reddit r/vscode", time: "Yesterday", source_type: "social", category: "feature_request", urgency: "low", icon: "💬" },
-    { text: "Settings search ranking feels off. Searching 'font size' shows wrong result first.", source: "Microsoft Tech Community", time: "Yesterday", source_type: "external", category: "ux_issue", urgency: "low", icon: "🏢" },
-    { text: "Great editor overall (4/5 stars). Git diff view is nearly unreadable in dark mode.", source: "G2 Review · ★★★★☆", time: "2 days ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "⭐" },
-    { text: "Terminal font rendering is completely broken at 200% display scaling on Windows 11.", source: "Stack Overflow", time: "2 days ago", source_type: "external", category: "bug", urgency: "medium", icon: "📚" },
-    { text: "CSAT: 3/5. Wish VS Code had a built-in HTTP client like JetBrains.", source: "Post-Support Email Survey", time: "3 days ago", source_type: "survey", category: "feature_request", urgency: "low", icon: "📧" },
-    { text: "Love the editor but really need AI-powered rename across files.", source: "In-App Widget", time: "3 days ago", source_type: "internal", category: "feature_request", urgency: "low", icon: "📱" },
-    { text: "After updating to v1.89.1, Jupyter notebook integration stopped working.", source: "Microsoft Tech Community", time: "4 days ago", source_type: "external", category: "bug", urgency: "high", icon: "🏢" }
+    { text: "Completion-inserted `()` no longer tracked as auto-closed pair — backspace no longer deletes both chars.", source: "GitHub Issues #315131", time: "just now", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
+    { text: "Show AI credits used in Agent Debug logs — add a summary card to the agent debug output.", source: "GitHub Issues #314417", time: "7m ago", source_type: "external", category: "feature_request", urgency: "low", icon: "🐙" },
+    { text: "AgentHost: Stuck on client tool calls. I still get stuck on these most of the time.", source: "GitHub Issues #315124", time: "9m ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
+    { text: "View Usage button seems redundant. I can already see I'm at 50% — the button doesn't add clarity.", source: "GitHub Issues #315087", time: "23m ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "🐙" },
+    { text: "Usage compared to ULB not updating. After sending a request my usage is not reflected.", source: "GitHub Issues #315101", time: "25m ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
+    { text: "Polish design for session sync and indexing in status menu — remove expandable sections, inline actions.", source: "GitHub Issues #314794", time: "30m ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "🐙" },
+    { text: "Copilot thinks we've ran out of tokens and won't automatically compact — Claude Opus 4.7 affected.", source: "GitHub Issues #314816", time: "32m ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
+    { text: "[Bug] Infinite 'Compacted conversation' loop on 2nd turn. Multi-turn conversations are completely broken.", source: "GitHub Issues #313722", time: "37m ago", source_type: "external", category: "bug", urgency: "critical", icon: "🐙" },
+    { text: "workbench.browser.openLocalhostLinks parameter does not work after an update.", source: "GitHub Issues #314949", time: "42m ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
+    { text: "[Insiders] BYOK models not available in Agents app — no 'Local' agent type option exists.", source: "GitHub Issues #315107", time: "1h ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
+    { text: "[Insiders] BYOK configuration not shared between VS Code Insiders and Agents app.", source: "GitHub Issues #315108", time: "1h ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
+    { text: "chat.pluginLocations: Support parent directory resolution to discover all plugins under a common root.", source: "GitHub Issues #308791", time: "1h ago", source_type: "external", category: "feature_request", urgency: "low", icon: "🐙" }
   ]
 };
 /* DATA_END */

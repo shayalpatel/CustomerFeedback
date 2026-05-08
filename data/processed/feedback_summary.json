@@ -1,0 +1,134 @@
+{
+  "generated_at": "2026-05-07T12:00:00Z",
+  "totals": { "bug": 28, "feature_request": 17, "ux_issue": 17 },
+  "by_source": {
+    "github_issues": 27,
+    "in_app_widget": 8,
+    "support_ticket": 8,
+    "nps_survey": 4,
+    "reddit": 4,
+    "g2_review": 4,
+    "csat_survey": 3,
+    "email_survey": 3,
+    "stack_overflow": 3,
+    "tech_community": 3,
+    "capterra_review": 2
+  },
+  "by_product_area": {
+    "copilot": 23,
+    "editor": 8,
+    "extensions": 7,
+    "remote": 6,
+    "settings": 5,
+    "terminal": 4,
+    "git": 3,
+    "themes": 3,
+    "workspaces": 3,
+    "search": 2,
+    "debugging": 2,
+    "sidebar": 1
+  },
+  "critical_items": [
+    {
+      "id": "gh-313722",
+      "source": "github_issues",
+      "timestamp": "2026-05-07T22:54:03Z",
+      "product_area": "copilot",
+      "category": "bug",
+      "one_line_summary": "Multi-turn conversations broken by infinite compaction loop after file edits",
+      "url": "https://github.com/microsoft/vscode/issues/313722"
+    },
+    {
+      "id": "gh-313210",
+      "source": "github_issues",
+      "timestamp": "2026-05-07T22:18:36Z",
+      "product_area": "copilot",
+      "category": "bug",
+      "one_line_summary": "Copilot agent mode can be prompted to bypass sandbox restrictions",
+      "url": "https://github.com/microsoft/vscode/issues/313210"
+    },
+    {
+      "id": "iaw-1001",
+      "source": "in_app_widget",
+      "timestamp": "2026-05-05T09:12:00Z",
+      "product_area": "extensions",
+      "category": "bug",
+      "one_line_summary": "Extension host crashes repeatedly mid-session, third time this week"
+    },
+    {
+      "id": "cap-156",
+      "source": "capterra_review",
+      "timestamp": "2026-04-30T12:00:00Z",
+      "product_area": "extensions",
+      "category": "bug",
+      "one_line_summary": "Extension host crashes repeatedly causing unsaved work data loss",
+      "url": "https://www.capterra.com/reviews/vscode/156"
+    },
+    {
+      "id": "st-4415",
+      "source": "support_ticket",
+      "timestamp": "2026-05-03T13:20:00Z",
+      "product_area": "extensions",
+      "category": "bug",
+      "one_line_summary": "Extension host crashes daily with specific extension causing unsaved data loss"
+    }
+  ],
+  "top_clusters": [
+    {
+      "title": "Extension host crashes causing data loss",
+      "category": "bug",
+      "item_count": 4,
+      "sources": ["in_app_widget", "reddit", "capterra_review", "support_ticket"],
+      "growth": "new",
+      "urgency": "critical",
+      "signal": "spike detected — all reports within last 7 days",
+      "sample_texts": [
+        { "text": "Extension host crashed again mid-session. Third time this week on my work repo.", "meta": "In-App Widget · May 5" },
+        { "text": "Extension host keeps crashing with Data Loss Studio extension. Losing unsaved work every day.", "meta": "Support Ticket #4415 · May 3" },
+        { "text": "Extension host crashes are a major issue that have caused me data loss.", "meta": "Capterra Review · Apr 30" }
+      ]
+    },
+    {
+      "title": "AgentHost remote reconnection failures",
+      "category": "bug",
+      "item_count": 3,
+      "sources": ["github_issues"],
+      "growth": "new",
+      "urgency": "high",
+      "signal": "3 reports today — watch this week",
+      "sample_texts": [
+        { "text": "AgentHost: reconnection issues with tunnels/ssh. Restarting the app is the only fix.", "meta": "GitHub #315104 · May 7" },
+        { "text": "Stuff breaks if I try to reopen a remote session before we have fully reconnected.", "meta": "GitHub #315126 · May 7" },
+        { "text": "I see my sessions but I don't see their current in-progress state. Two instances stepping on toes.", "meta": "GitHub #314887 · May 7" }
+      ]
+    },
+    {
+      "title": "Copilot suggestion latency on slower connections",
+      "category": "ux_issue",
+      "item_count": 3,
+      "sources": ["in_app_widget", "support_ticket", "nps_survey"],
+      "growth": "new",
+      "urgency": "high",
+      "signal": "consistent reports across 3 channels",
+      "sample_texts": [
+        { "text": "Copilot suggestions have a noticeable 3-4 second delay on my home internet.", "meta": "Support Ticket #4421 · May 4" },
+        { "text": "Love the new Copilot integration but it's really laggy.", "meta": "In-App Widget · May 3" },
+        { "text": "NPS 9/10. Copilot is amazing but latency on slower connections is noticeable.", "meta": "NPS Survey · May 3" }
+      ]
+    },
+    {
+      "title": "Extension marketplace search hard to navigate",
+      "category": "ux_issue",
+      "item_count": 3,
+      "sources": ["tech_community", "g2_review", "nps_survey"],
+      "growth": "stable",
+      "urgency": "medium",
+      "signal": "2 weeks open",
+      "sample_texts": [
+        { "text": "Marketplace search results are confusing. Extensions with similar names make it hard to find what I need.", "meta": "Tech Community · Apr 27" },
+        { "text": "Extension marketplace is excellent but search needs improvement. Too many similar extensions.", "meta": "G2 Review · Apr 29" },
+        { "text": "NPS 6/10. The extension management UI could be much cleaner.", "meta": "NPS Survey · Apr 29" }
+      ]
+    }
+  ]
+}
