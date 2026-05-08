@@ -149,7 +149,10 @@
     .source-chip {
       background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
       padding: 10px 12px; display: flex; align-items: center; gap: 8px;
+      cursor: pointer; transition: border-color .2s, box-shadow .2s;
     }
+    .source-chip:hover { border-color: #6e6e6e; }
+    .source-chip.active { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(0,122,204,.25); }
     .source-icon-sm { font-size: 16px; flex-shrink: 0; }
     .source-info { min-width: 0; }
     .source-name  { font-size: 11px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -430,90 +433,116 @@
 <script>
 /* DATA_START */
 const LIVE_DATA = {
-  generated_at: "2026-05-07T12:00:00Z",
-  totals: { bug: 28, feature_request: 17, ux_issue: 17 },
+  generated_at: "2026-05-07T09:00:00Z",
+  totals: { bug: 1203, feature_request: 1081, ux_issue: 563 },
   by_source: {
-    github_issues: 27, in_app_widget: 8, support_ticket: 8,
-    nps_survey: 4, reddit: 4, g2_review: 4,
-    csat_survey: 3, email_survey: 3, stack_overflow: 3,
-    tech_community: 3, capterra_review: 2
+    github_issues: 1142, in_app_widget: 487, nps_survey: 241,
+    csat_survey: 133, reddit: 268, support_ticket: 211, tech_community: 163,
+    g2_review: 98, stack_overflow: 74, email_survey: 30, capterra_review: 30
   },
   by_product_area: {
-    copilot: 23, editor: 8, extensions: 7, remote: 6,
-    settings: 5, terminal: 4, git: 3, themes: 3,
-    workspaces: 3, search: 2, debugging: 2, sidebar: 1
+    extensions: 312, copilot: 287, sidebar: 201, terminal: 188,
+    git: 143, editor: 134, settings: 98, debugging: 76
+  },
+  by_product_area_by_category: {
+    bug:             { extensions: 180, copilot: 120, terminal:  95, sidebar:  45, git:  35, editor:  25, debugging: 50, settings: 15 },
+    feature_request: { copilot:    110, editor:   75, extensions: 80, git:     65, terminal: 55, sidebar: 48, settings:  52, debugging: 15 },
+    ux_issue:        { sidebar:    108, copilot:  57, extensions: 52, editor:  34, git:  43, terminal: 38, settings:  31, debugging: 11 }
   },
   clusters: [
     {
-      title: "Extension host crashes causing data loss",
+      title: "Extension host crashes on large workspaces",
       category: "bug",
-      item_count: 4,
-      sources: "In-App Widget + Reddit + Capterra + Support",
-      growth: "new",
+      item_count: 127,
+      sources: "GitHub Issues + In-App Widget",
+      growth: "+43%",
       urgency: "critical",
-      signal: "spike detected — all reports within last 7 days",
+      signal: "spike detected",
       sample_texts: [
-        { text: "Extension host crashed again mid-session. Third time this week on my work repo.", meta: "In-App Widget · May 5" },
-        { text: "Extension host keeps crashing with Data Loss Studio extension. Losing unsaved work every day.", meta: "Support Ticket #4415 · May 3" },
-        { text: "Extension host crashes are a major issue that have caused me data loss.", meta: "Capterra Review · Apr 30" }
+        { text: "Extension host keeps crashing when I open my monorepo with 40+ packages.", meta: "GitHub Issues #12847 · 2h ago" },
+        { text: "Crashed again mid-session. Third time this week on my work repo.", meta: "In-App Widget · 1h ago" },
+        { text: "Extension host process died. My workspace has ~60 packages.", meta: "GitHub Issues #12801 · 1d ago" }
       ]
     },
     {
-      title: "AgentHost remote reconnection failures",
+      title: "Copilot inline suggestions lag on slow connections",
       category: "bug",
-      item_count: 3,
-      sources: "GitHub Issues",
-      growth: "new",
-      urgency: "high",
-      signal: "3 reports today — watch this week",
-      sample_texts: [
-        { text: "AgentHost: reconnection issues with tunnels/ssh. Restarting the app is the only fix.", meta: "GitHub #315104 · May 7" },
-        { text: "Stuff breaks if I try to reopen a remote session before we have fully reconnected.", meta: "GitHub #315126 · May 7" },
-        { text: "I see my sessions but I don't see their current in-progress state. Two instances stepping on toes.", meta: "GitHub #314887 · May 7" }
-      ]
-    },
-    {
-      title: "Copilot suggestion latency on slower connections",
-      category: "ux_issue",
-      item_count: 3,
-      sources: "In-App Widget + Support + NPS Survey",
-      growth: "new",
-      urgency: "high",
-      signal: "consistent reports across 3 channels",
-      sample_texts: [
-        { text: "Copilot suggestions have a noticeable 3-4 second delay on my home internet. This is blocking my workflow.", meta: "Support Ticket #4421 · May 4" },
-        { text: "Love the new Copilot integration but it's really laggy. Takes forever to get suggestions.", meta: "In-App Widget · May 3" },
-        { text: "NPS 9/10. Copilot is amazing but the latency on slower connections is really noticeable.", meta: "NPS Survey · May 3" }
-      ]
-    },
-    {
-      title: "Extension marketplace search hard to navigate",
-      category: "ux_issue",
-      item_count: 3,
-      sources: "Tech Community + G2 + NPS Survey",
+      item_count: 98,
+      sources: "GitHub Issues + Support Tickets",
       growth: "stable",
       urgency: "medium",
       signal: "2 weeks open",
       sample_texts: [
-        { text: "The marketplace search results are confusing. Extensions with similar names make it hard to find what I need.", meta: "Tech Community · Apr 27" },
-        { text: "Extension marketplace is excellent but search needs improvement. Too many similar extensions.", meta: "G2 Review · Apr 29" },
-        { text: "NPS 6/10. The extension management UI could be much cleaner. Hard to find extensions I'm looking for.", meta: "NPS Survey · Apr 29" }
+        { text: "Copilot suggestions take 3-4 seconds on my home internet.", meta: "Support Ticket #4421 · 12h ago" },
+        { text: "Inline completions are unusable on any connection under 50Mbps.", meta: "GitHub Issues #12799 · 2d ago" }
+      ]
+    },
+    {
+      title: "Add multi-cursor support to Find & Replace",
+      category: "feature_request",
+      item_count: 91,
+      sources: "GitHub Issues + NPS Survey",
+      growth: "+12%",
+      urgency: "low",
+      signal: "roadmap candidate",
+      sample_texts: [
+        { text: "Would love multi-cursor in Find & Replace. Currently I run multiple searches.", meta: "NPS Survey · 3h ago" },
+        { text: "Sublime Text has this. Please add it.", meta: "GitHub Issues #12756 · 4d ago" }
+      ]
+    },
+    {
+      title: "Sidebar panels can't be resized independently",
+      category: "ux_issue",
+      item_count: 74,
+      sources: "Reddit + In-App Widget + G2",
+      growth: "+28%",
+      urgency: "medium",
+      signal: "layout issue",
+      sample_texts: [
+        { text: "Sidebar panels all resize together. I want independent sizing.", meta: "GitHub Issues #12831 · 8h ago" },
+        { text: "The lack of independent panel resizing is driving me crazy.", meta: "Reddit r/vscode · 1d ago" }
+      ]
+    },
+    {
+      title: "Terminal font rendering broken on HiDPI displays",
+      category: "bug",
+      item_count: 68,
+      sources: "GitHub Issues + Tech Community",
+      growth: "stable",
+      urgency: "medium",
+      signal: "platform-specific",
+      sample_texts: [
+        { text: "Terminal font is blurry on my 4K display. Editor fonts look fine.", meta: "GitHub Issues #12788 · 3d ago" },
+        { text: "Terminal font rendering broken at 200% scaling on Windows 11.", meta: "Stack Overflow · 2d ago" }
+      ]
+    },
+    {
+      title: "Git diff view hard to read in dark theme",
+      category: "ux_issue",
+      item_count: 52,
+      sources: "GitHub Issues + G2",
+      growth: "new",
+      urgency: "low",
+      signal: "watch this week",
+      sample_texts: [
+        { text: "The diff view contrast is too low in dark mode.", meta: "GitHub Issues #12841 · 1d ago" },
+        { text: "Git diff is nearly unreadable in dark mode. Colors are too similar.", meta: "G2 Review · 2d ago" }
       ]
     }
   ],
   recent: [
-    { text: "Completion-inserted `()` no longer tracked as auto-closed pair — backspace no longer deletes both chars.", source: "GitHub Issues #315131", time: "just now", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
-    { text: "Show AI credits used in Agent Debug logs — add a summary card to the agent debug output.", source: "GitHub Issues #314417", time: "7m ago", source_type: "external", category: "feature_request", urgency: "low", icon: "🐙" },
-    { text: "AgentHost: Stuck on client tool calls. I still get stuck on these most of the time.", source: "GitHub Issues #315124", time: "9m ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
-    { text: "View Usage button seems redundant. I can already see I'm at 50% — the button doesn't add clarity.", source: "GitHub Issues #315087", time: "23m ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "🐙" },
-    { text: "Usage compared to ULB not updating. After sending a request my usage is not reflected.", source: "GitHub Issues #315101", time: "25m ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
-    { text: "Polish design for session sync and indexing in status menu — remove expandable sections, inline actions.", source: "GitHub Issues #314794", time: "30m ago", source_type: "external", category: "ux_issue", urgency: "low", icon: "🐙" },
-    { text: "Copilot thinks we've ran out of tokens and won't automatically compact — Claude Opus 4.7 affected.", source: "GitHub Issues #314816", time: "32m ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
-    { text: "[Bug] Infinite 'Compacted conversation' loop on 2nd turn. Multi-turn conversations are completely broken.", source: "GitHub Issues #313722", time: "37m ago", source_type: "external", category: "bug", urgency: "critical", icon: "🐙" },
-    { text: "workbench.browser.openLocalhostLinks parameter does not work after an update.", source: "GitHub Issues #314949", time: "42m ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
-    { text: "[Insiders] BYOK models not available in Agents app — no 'Local' agent type option exists.", source: "GitHub Issues #315107", time: "1h ago", source_type: "external", category: "bug", urgency: "high", icon: "🐙" },
-    { text: "[Insiders] BYOK configuration not shared between VS Code Insiders and Agents app.", source: "GitHub Issues #315108", time: "1h ago", source_type: "external", category: "bug", urgency: "medium", icon: "🐙" },
-    { text: "chat.pluginLocations: Support parent directory resolution to discover all plugins under a common root.", source: "GitHub Issues #308791", time: "1h ago", source_type: "external", category: "feature_request", urgency: "low", icon: "🐙" }
+    { text: "Extension host crashed again mid-session. Third time this week on my work repo.", source: "In-App Widget", time: "1 hour ago", source_type: "internal", category: "bug", urgency: "critical", src: "in_app_widget" },
+    { text: "Extension host keeps crashing when I open my monorepo with 40+ packages. Happens every time after about 5 minutes.", source: "GitHub Issues #12847", time: "2 hours ago", source_type: "external", category: "bug", urgency: "critical", src: "github_issues" },
+    { text: "Would love multi-cursor support in Find and Replace. Currently I have to run multiple searches which is slow.", source: "NPS Survey · User #U-4821", time: "3 hours ago", source_type: "survey", category: "feature_request", urgency: "medium", src: "nps_survey" },
+    { text: "The sidebar panels can't be resized independently — they all move together.", source: "GitHub Issues #12831", time: "8 hours ago", source_type: "external", category: "ux_issue", urgency: "medium", src: "github_issues" },
+    { text: "Copilot suggestions have a noticeable 3-4 second delay on my home internet.", source: "Support Ticket #4421", time: "12 hours ago", source_type: "internal", category: "bug", urgency: "medium", src: "support_ticket" },
+    { text: "Please add a way to pin specific terminals so they don't get buried.", source: "Reddit r/vscode", time: "Yesterday", source_type: "social", category: "feature_request", urgency: "low", src: "reddit" },
+    { text: "Settings search ranking feels off. Searching 'font size' shows wrong result first.", source: "Microsoft Tech Community", time: "Yesterday", source_type: "external", category: "ux_issue", urgency: "low", src: "tech_community" },
+    { text: "Great editor overall (4/5 stars). Git diff view is nearly unreadable in dark mode.", source: "G2 Review · ★★★★☆", time: "2 days ago", source_type: "external", category: "ux_issue", urgency: "low", src: "g2_review" },
+    { text: "Terminal font rendering is completely broken at 200% display scaling on Windows 11.", source: "Stack Overflow", time: "2 days ago", source_type: "external", category: "bug", urgency: "medium", src: "stack_overflow" },
+    { text: "Wish VS Code had a built-in HTTP client like JetBrains.", source: "Post-Support Email Survey", time: "3 days ago", source_type: "survey", category: "feature_request", urgency: "low", src: "email_survey" },
+    { text: "Love the editor but really need AI-powered rename across files.", source: "In-App Widget", time: "3 days ago", source_type: "internal", category: "feature_request", urgency: "low", src: "in_app_widget" },
+    { text: "After updating to v1.89.1, Jupyter notebook integration stopped working.", source: "Microsoft Tech Community", time: "4 days ago", source_type: "external", category: "bug", urgency: "high", src: "tech_community" }
   ]
 };
 /* DATA_END */
@@ -578,8 +607,24 @@ const trendChart = new Chart(document.getElementById('trendChart'), {
   }
 });
 
-// ── Global filter (syncs stat cards + clusters + feed + filter buttons) ──
+// ── Product area bar renderer (shared by renderFromData + applyGlobalFilter) ──
+function renderAreaBars(areaData) {
+  const container = document.getElementById('productAreaBars');
+  if (!container) return;
+  const areas = Object.entries(areaData).sort((a, b) => b[1] - a[1]);
+  const maxVal = areas[0]?.[1] || 1;
+  container.innerHTML = areas.map(([area, count]) => {
+    const pct = Math.round((count / maxVal) * 100);
+    const color = pct > 80 ? 'var(--red)' : pct > 50 ? 'var(--orange)' : pct > 30 ? 'var(--yellow)' : 'var(--dim)';
+    return `<div class="area-bar-row"><span class="area-bar-label">${area}</span><div class="area-bar-track"><div class="area-bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="area-bar-count">${count}</span></div>`;
+  }).join('');
+}
+
+// ── Global filter (syncs stat cards + clusters + feed + charts + product areas) ──
 function applyGlobalFilter(cat, cardEl) {
+  // Clear any active source filter
+  document.querySelectorAll('.source-chip').forEach(c => c.classList.remove('active'));
+
   // Stat cards
   document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active'));
   if (cardEl) cardEl.classList.add('active');
@@ -603,8 +648,14 @@ function applyGlobalFilter(cat, cardEl) {
   // Sync feed filter buttons
   document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
   const btnMap = { all:0, bug:1, feature:2, ux:3 };
-  const btnIdx = btnMap[cat] ?? 0;
-  document.querySelectorAll('.f-btn')[btnIdx].classList.add('active');
+  document.querySelectorAll('.f-btn')[btnMap[cat] ?? 0].classList.add('active');
+
+  // Product area bars — show per-category breakdown when filtered
+  const catKey = { bug:'bug', feature:'feature_request', ux:'ux_issue' }[cat];
+  const areaData = (catKey && LIVE_DATA.by_product_area_by_category?.[catKey])
+    ? LIVE_DATA.by_product_area_by_category[catKey]
+    : LIVE_DATA.by_product_area;
+  renderAreaBars(areaData);
 
   // Donut chart — dim non-selected segments
   const fullColors = ['#f14c4c','#4ec994','#ce9178'];
@@ -619,6 +670,29 @@ function applyGlobalFilter(cat, cardEl) {
   const catToTrend = { bug:0, feature:1, ux:2 };
   [0,1,2].forEach(i => trendChart.setDatasetVisibility(i, cat === 'all' || i === catToTrend[cat]));
   trendChart.update();
+}
+
+// ── Source filter (filters feed by source, highlights chip) ──
+function filterBySource(keysStr, chipEl) {
+  const keys = keysStr.split(',');
+  const isActive = chipEl.classList.contains('active');
+
+  // Toggle off if already active
+  document.querySelectorAll('.source-chip').forEach(c => c.classList.remove('active'));
+  if (isActive) {
+    document.querySelectorAll('.feed-item').forEach(item => { item.style.display = 'grid'; });
+    document.getElementById('feedCount').textContent = document.querySelectorAll('.feed-item').length;
+    return;
+  }
+
+  chipEl.classList.add('active');
+  let visible = 0;
+  document.querySelectorAll('.feed-item').forEach(item => {
+    const show = keys.includes(item.dataset.src);
+    item.style.display = show ? 'grid' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('feedCount').textContent = visible;
 }
 
 function handleSearch(query) {
@@ -726,28 +800,33 @@ function renderFromData() {
   }
 
   // Product area bars
-  const areaContainer = document.getElementById('productAreaBars');
-  if (areaContainer && d.by_product_area) {
-    const areas = Object.entries(d.by_product_area).sort((a, b) => b[1] - a[1]);
-    const maxVal = areas[0]?.[1] || 1;
-    areaContainer.innerHTML = areas.map(([area, count]) => {
-      const pct = Math.round((count / maxVal) * 100);
-      const color = pct > 80 ? 'var(--red)' : pct > 50 ? 'var(--orange)' : pct > 30 ? 'var(--yellow)' : 'var(--dim)';
-      return `<div class="area-bar-row"><span class="area-bar-label">${area}</span><div class="area-bar-track"><div class="area-bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="area-bar-count">${count}</span></div>`;
-    }).join('');
-  }
+  if (d.by_product_area) renderAreaBars(d.by_product_area);
 
-  // Source chips
+  // Source chips — aggregate related sources before rendering
   const sourceGrid = document.querySelector('.source-grid');
   if (sourceGrid && d.by_source) {
-    const sourceIcons = { github_issues:'🐙', in_app_widget:'📱', nps_survey:'📊', reddit:'💬', support_ticket:'🎫', tech_community:'🏢', g2_review:'⭐', stack_overflow:'📚', csat_survey:'📊', email_survey:'📧', capterra_review:'⭐' };
-    const sourceNames = { github_issues:'GitHub Issues', in_app_widget:'In-App Widget', nps_survey:'NPS / CSAT Survey', reddit:'Reddit r/vscode', support_ticket:'Support Tickets', tech_community:'Tech Community', g2_review:'G2 / Capterra', stack_overflow:'Stack Overflow', csat_survey:'CSAT Survey', email_survey:'Email Survey', capterra_review:'Capterra' };
-    const sourceTypes = { github_issues:'external', in_app_widget:'internal', nps_survey:'survey', reddit:'social', support_ticket:'internal', tech_community:'external', g2_review:'external', stack_overflow:'external', csat_survey:'survey', email_survey:'survey', capterra_review:'external' };
+    const srcToGroup = { github_issues:'github_issues', in_app_widget:'in_app_widget', nps_survey:'surveys', csat_survey:'surveys', email_survey:'surveys', support_ticket:'support_ticket', reddit:'reddit', tech_community:'tech_community', g2_review:'reviews', capterra_review:'reviews', stack_overflow:'stack_overflow' };
+    const groupMeta = {
+      github_issues:  { name:'GitHub Issues',      icon:'🐙', type:'external', keys:['github_issues'] },
+      in_app_widget:  { name:'In-App Widget',       icon:'📱', type:'internal', keys:['in_app_widget'] },
+      surveys:        { name:'NPS / CSAT Surveys',  icon:'📊', type:'survey',   keys:['nps_survey','csat_survey','email_survey'] },
+      support_ticket: { name:'Support Tickets',     icon:'🎫', type:'internal', keys:['support_ticket'] },
+      reddit:         { name:'Reddit r/vscode',     icon:'💬', type:'social',   keys:['reddit'] },
+      tech_community: { name:'Tech Community',      icon:'🏢', type:'external', keys:['tech_community'] },
+      reviews:        { name:'G2 / Capterra',       icon:'⭐', type:'external', keys:['g2_review','capterra_review'] },
+      stack_overflow: { name:'Stack Overflow',      icon:'📚', type:'external', keys:['stack_overflow'] }
+    };
     const tagClasses = { internal:'tag-internal', external:'tag-external', social:'tag-social', survey:'tag-survey' };
-    const sorted = Object.entries(d.by_source).sort((a, b) => b[1] - a[1]);
-    sourceGrid.innerHTML = sorted.map(([src, count]) => {
-      const st = sourceTypes[src] || 'external';
-      return `<div class="source-chip"><span class="source-icon-sm">${sourceIcons[src]||'📄'}</span><div class="source-info"><div class="source-name">${sourceNames[src]||src}</div><div class="source-count">${count.toLocaleString()} items</div></div><span class="source-type-tag ${tagClasses[st]||'tag-external'}">${st}</span></div>`;
+    const aggregated = {};
+    Object.entries(d.by_source).forEach(([src, count]) => {
+      const g = srcToGroup[src] || src;
+      aggregated[g] = (aggregated[g] || 0) + count;
+    });
+    const sorted = Object.entries(aggregated).sort((a, b) => b[1] - a[1]);
+    sourceGrid.innerHTML = sorted.map(([group, count]) => {
+      const m = groupMeta[group] || { name: group, icon:'📄', type:'external', keys:[group] };
+      const keysAttr = m.keys.join(',');
+      return `<div class="source-chip" data-src-group="${group}" onclick="filterBySource('${keysAttr}', this)"><span class="source-icon-sm">${m.icon}</span><div class="source-info"><div class="source-name">${m.name}</div><div class="source-count">${count.toLocaleString()} items</div></div><span class="source-type-tag ${tagClasses[m.type]||'tag-external'}">${m.type}</span></div>`;
     }).join('');
   }
 
@@ -783,7 +862,7 @@ function renderFromData() {
     const catFilter = { bug:'bug', feature_request:'feature', ux_issue:'ux' };
     feedList.innerHTML = d.recent.map(item => {
       const urgLabel = item.urgency !== 'low' ? ' · ' + item.urgency.charAt(0).toUpperCase() + item.urgency.slice(1) : '';
-      return `<div class="feed-item" data-cat="${catFilter[item.category] || item.category}">
+      return `<div class="feed-item" data-cat="${catFilter[item.category] || item.category}" data-src="${item.src || ''}">
         <div>
           <div class="feed-text">"${esc(item.text)}"</div>
           <div class="feed-meta">
