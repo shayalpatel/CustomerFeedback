@@ -653,7 +653,7 @@ function applyGlobalFilter(cat, cardEl) {
     : LIVE_DATA.by_product_area;
   renderAreaBars(areaData);
 
-  // Donut chart — dim non-selected segments
+  // Donut chart — dim non-selected segments + update center label
   const fullColors = ['#f14c4c','#4ec994','#ce9178'];
   const dimColors  = ['rgba(241,76,76,.15)','rgba(78,201,148,.15)','rgba(206,145,120,.15)'];
   const catToDonut = { bug:0, feature:1, ux:2 };
@@ -661,6 +661,19 @@ function applyGlobalFilter(cat, cardEl) {
     ? fullColors
     : fullColors.map((c,i) => i === catToDonut[cat] ? c : dimColors[i]);
   donutChart.update();
+
+  const total = LIVE_DATA.totals.bug + LIVE_DATA.totals.feature_request + LIVE_DATA.totals.ux_issue;
+  const centerNum = document.querySelector('.donut-center-num');
+  const centerLbl = document.querySelector('.donut-center-lbl');
+  const catCounts = { bug: LIVE_DATA.totals.bug, feature: LIVE_DATA.totals.feature_request, ux: LIVE_DATA.totals.ux_issue };
+  const catLabels = { bug: 'Bugs', feature: 'Features', ux: 'UX Issues' };
+  if (cat === 'all') {
+    centerNum.textContent = total.toLocaleString();
+    centerLbl.textContent = 'Total';
+  } else {
+    centerNum.textContent = catCounts[cat].toLocaleString();
+    centerLbl.textContent = catLabels[cat];
+  }
 
   // Trajectory chart — show only selected line
   const catToTrend = { bug:0, feature:1, ux:2 };
