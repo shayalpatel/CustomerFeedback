@@ -130,7 +130,7 @@
     .area-bar-count { width: 36px; font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; }
 
     /* ─── CHARTS ─── */
-    .charts-row { display: grid; grid-template-columns: 1fr 300px; gap: 14px; margin-bottom: 28px; align-items: start; }
+    .charts-row { display: grid; grid-template-columns: 1fr 300px; gap: 14px; margin-bottom: 28px; align-items: stretch; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
     .card-header { margin-bottom: 18px; }
     .card-title  { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
@@ -578,7 +578,7 @@ const donutChart = new Chart(document.getElementById('donutChart'), {
   }
 });
 
-new Chart(document.getElementById('trendChart'), {
+const trendChart = new Chart(document.getElementById('trendChart'), {
   type:'line',
   data: {
     labels:DAYS,
@@ -626,6 +626,20 @@ function applyGlobalFilter(cat, cardEl) {
   const btnMap = { all:0, bug:1, feature:2, ux:3 };
   const btnIdx = btnMap[cat] ?? 0;
   document.querySelectorAll('.f-btn')[btnIdx].classList.add('active');
+
+  // Donut chart — dim non-selected segments
+  const fullColors = ['#f14c4c','#4ec994','#ce9178'];
+  const dimColors  = ['rgba(241,76,76,.15)','rgba(78,201,148,.15)','rgba(206,145,120,.15)'];
+  const catToDonut = { bug:0, feature:1, ux:2 };
+  donutChart.data.datasets[0].backgroundColor = cat === 'all'
+    ? fullColors
+    : fullColors.map((c,i) => i === catToDonut[cat] ? c : dimColors[i]);
+  donutChart.update();
+
+  // Trajectory chart — show only selected line
+  const catToTrend = { bug:0, feature:1, ux:2 };
+  [0,1,2].forEach(i => trendChart.setDatasetVisibility(i, cat === 'all' || i === catToTrend[cat]));
+  trendChart.update();
 }
 
 function handleSearch(query) {
