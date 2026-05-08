@@ -576,7 +576,7 @@ const donutChart = new Chart(document.getElementById('donutChart'), {
     },
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks:{ label: c => ` ${c.label}: ${c.parsed.toLocaleString()} (${Math.round(c.parsed/2847*100)}%)` } }
+      tooltip: { enabled: false }
     },
     cutout:'62%'
   }
