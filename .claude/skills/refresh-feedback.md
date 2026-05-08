@@ -95,7 +95,7 @@ Write to `data/processed/feedback_summary.json`:
 
 ## Step 5: Update dashboard
 
-Read `dashboard/index.html`. Find the text between `/* DATA_START */` and `/* DATA_END */`.
+Read `index.html`. Find the text between `/* DATA_START */` and `/* DATA_END */`.
 
 Replace that entire block with a new `LIVE_DATA` object built from the summary, clusters, and recent classified items. The structure must match:
 
@@ -117,14 +117,14 @@ For the `recent` array, use the 12 most recently timestamped items. Assign icons
 - support_ticket: 🎫, tech_community: 🏢, g2_review/capterra_review: ⭐
 - stack_overflow: 📚, email_survey: 📧
 
-Write the updated `dashboard/index.html`.
+Write the updated `index.html`.
 
 ## Step 6: Commit and push
 
 Run:
 
 ```bash
-git add data/processed/ dashboard/index.html
+git add data/processed/ index.html
 git commit -m "chore: feedback refresh $(date '+%Y-%m-%d %H:%M')"
 git push
 ```
