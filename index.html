@@ -196,7 +196,7 @@
 
     .feed-list { display: flex; flex-direction: column; }
     .feed-item {
-      display: grid; grid-template-columns: 32px 1fr 10px; gap: 12px;
+      display: grid; grid-template-columns: 1fr 10px; gap: 12px;
       align-items: start; padding: 14px 0; border-bottom: 1px solid var(--border);
       transition: opacity .25s;
     }
@@ -240,6 +240,9 @@
     .modal-items-title { font-size: 11px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; margin: 16px 0 10px; }
     .modal-item { background: var(--surface2); border-radius: 7px; padding: 10px 12px; margin-bottom: 8px; font-size: 12px; line-height: 1.45; color: var(--text); border: 1px solid var(--border); }
     .modal-item-meta { font-size: 10px; color: var(--dim); margin-top: 5px; }
+    .jira-btn { margin-top: 20px; width: 100%; padding: 10px; background: #0052cc; border: none; border-radius: 7px; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .15s; }
+    .jira-btn:hover { background: #0065ff; }
+    .jira-confirm { margin-top: 10px; text-align: center; font-size: 12px; color: var(--green); display: none; }
 
     /* ─── FOOTER ─── */
     footer { text-align: center; padding: 28px 32px; font-size: 11px; color: var(--dim); border-top: 1px solid var(--border); }
@@ -372,9 +375,9 @@
       </div>
       <div class="filters">
         <button class="f-btn active" onclick="syncFilter(this,'all')">All</button>
-        <button class="f-btn" onclick="syncFilter(this,'bug')">🔴 Bugs</button>
-        <button class="f-btn" onclick="syncFilter(this,'feature')">🟢 Feature Requests</button>
-        <button class="f-btn" onclick="syncFilter(this,'ux')">🟠 UX Issues</button>
+        <button class="f-btn" onclick="syncFilter(this,'bug')">Bugs</button>
+        <button class="f-btn" onclick="syncFilter(this,'feature')">Feature Requests</button>
+        <button class="f-btn" onclick="syncFilter(this,'ux')">UX Issues</button>
       </div>
     </div>
     <div class="feed-list" id="feed"></div>
@@ -670,10 +673,24 @@ function openClusterByIndex(idx) {
     </div>
     <div class="modal-items-title">Sample Reports</div>
     ${(c.sample_texts || []).map(s => `<div class="modal-item">"${esc(s.text)}"<div class="modal-item-meta">${esc(s.meta)}</div></div>`).join('')}
+    <button class="jira-btn" onclick="createJiraTicket(this)">Create Jira Ticket</button>
+    <div class="jira-confirm" id="jiraConfirm"></div>
   `;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+function createJiraTicket(btn) {
+  const ticketNum = Math.floor(1000 + Math.random() * 9000);
+  btn.disabled = true;
+  btn.textContent = 'Creating…';
+  setTimeout(() => {
+    btn.style.display = 'none';
+    const confirm = document.getElementById('jiraConfirm');
+    confirm.textContent = `✓ Jira Ticket #VSC-${ticketNum} created successfully`;
+    confirm.style.display = 'block';
+  }, 800);
+}
+
 function closeModal(e) {
   if (e && e.target !== document.getElementById('modal')) return;
   document.getElementById('modal').classList.remove('open');
@@ -763,12 +780,10 @@ function renderFromData() {
     feedList.innerHTML = d.recent.map(item => {
       const urgLabel = item.urgency !== 'low' ? ' · ' + item.urgency.charAt(0).toUpperCase() + item.urgency.slice(1) : '';
       return `<div class="feed-item" data-cat="${catFilter[item.category] || item.category}">
-        <div class="src-icon">${item.icon}</div>
         <div>
           <div class="feed-text">"${esc(item.text)}"</div>
           <div class="feed-meta">
             <span>${esc(item.source)}</span><span>${esc(item.time)}</span>
-            <span class="feed-source-type ${tagClasses[item.source_type]||'tag-external'}">${item.source_type}</span>
             <span class="feed-cat-tag" style="background:${catColors[item.category]};color:${catTextColors[item.category]}">${catLabels[item.category]}${urgLabel}</span>
           </div>
         </div>
